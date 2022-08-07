@@ -223,9 +223,9 @@ AWS_STORAGE_BUCKET_NAME = config('aws_bucket_name')
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 #En AWS (S3) é onde se van a gardar os arquivos que os usuarios da web van a subir
-#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#Esto é para referirse os arquivos estáticos da páxina web. Pero eu como estos archivos gardoos na propia app, comento esta liña.
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#Esto é para referirse os arquivos estáticos da páxina web.
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 
