@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     #Para implementar o rich text no cuadro do text field dos artículos
     #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
+    'ckeditor_uploader',
     'entradas',
     #app para renderizar un pdf. Aunque estou vendo e senon inclúes a app eiqui tamén che funciona.
     'render_pdf'
@@ -239,4 +240,5 @@ AWS_DEFAULT_ACL = None
 #pip freeze > requirements.txt
 
 #Cando fas un cambio no modelo e tes que replicalo na base de datos de Heroku
+#Prba
 
