@@ -103,6 +103,8 @@ WSGI_APPLICATION = 'NovaEra.wsgi.application'
 ############Comproba se furruncha####################
 #Esto é para que non me de error a hora de completar os formularios no móbil
 CSRF_TRUSTED_ORIGINS = ['https://novaera.gal']
+CSRF_COOKIE_SECURE = False
+
 
 #-------------------start---------database local configuration---------------------
 # Database
@@ -190,7 +192,7 @@ STATICFILES_DIRS=[
 
 #ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
 MEDIA_URL='/mediafiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles")
+MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
