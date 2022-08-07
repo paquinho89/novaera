@@ -22,26 +22,24 @@
         color:red
       }
       /* Carousel styling */
-      #introCarousel,
-      .carousel-inner,
-      .carousel-item,
-      .carousel-item.active {
+      
+      .carousel-item {
         height: 100vh;
-      }
-
-      .carousel-item:nth-child(1) {
         background-image: url('{% static "Home_page_concerto.jpg" %}');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
       }
 
-      .carousel-item:nth-child(2) {
-        background-image: url('{% static "NovaEra_cd.jpg" %}');
+      .carousel-inner.active {
+        height: 100vh;
+        background-image: url('{% static "Home_page_concerto.jpg" %}');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
       }
+
+      
 
       /* Height for devices larger than 576px */
       @media (min-width: 992px) {
@@ -57,17 +55,7 @@
       .btn-dark:hover {
         background-color: grey;
     }
-    </style>
-
-    <!-- Carousel wrapper -->
-    <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="0" class="active"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="1"></li>
-        <li data-mdb-target="#introCarousel" data-mdb-slide-to="2"></li>
-      </ol>
-
+    </style>     
       <!-- Inner -->
       <div class="carousel-inner">
         <!-- Single item -->
@@ -78,7 +66,6 @@
                 <h1 class="mb-3">Nova Era actúa en Vigo o 10 de Xuño</h1>
                 <h5 class="mb-4">O evento terá lugar no Auditorio Martín Códax ás 19:00 horas</h5>
                 <a class="btn btn-outline-light btn-lg m-2" href="{% url 'pdf' %}" role="button" target="_blank">Programa</a>
-                <!--<a class="btn btn-outline-light btn-lg m-2" href="#footer" role="button">Programa</a>-->
               </div>
             </div>
           </div>

@@ -174,26 +174,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = '/static/'
-
-#Este código é para os arquivos estáticos como as imaxes... para cargalas tamén en Heroku
-#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATIC_URL = "/static/"
-#django_heroku.settings(locals())
-
-# Esto é para indicar a ruta onde temos as imaxes, pdf... Esto é válido tanto en local coma en Heroku
-STATICFILES_DIRS=[
-    BASE_DIR / "NovaEra/static/"
-]
-
-#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
-MEDIA_URL='/mediafiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -225,9 +205,32 @@ AWS_DEFAULT_ACL = None
 #En AWS (S3) é onde se van a gardar os arquivos que os usuarios da web van a subir
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #Esto é para referirse os arquivos estáticos da páxina web.
+AWS_LOCATION = 'static'
+STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+#Fase de desarrollo
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+STATIC_URL = '/static/'
+
+#Este código é para os arquivos estáticos como as imaxes... para cargalas tamén en Heroku
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_URL = "/static/"
+#django_heroku.settings(locals())
+
+# Esto é para indicar a ruta onde temos as imaxes, pdf... Esto é válido tanto en local coma en Heroku
+#STATICFILES_DIRS=[
+#    BASE_DIR / "NovaEra/static/"
+#]
+
+#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
+MEDIA_URL='/mediafiles/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
+
+#Upload static files ato S3 (AWS)
+# https://www.youtube.com/watch?v=nzLMA9WZqMM&t=179s
 
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
 #https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
