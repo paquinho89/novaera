@@ -36,7 +36,7 @@ SECRET_KEY = config('production_secret_key')
 DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
 
 # Application definition
 
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     
 ]
 
+# ESto é para o cheditor que me estaba dando error
 CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
 MIDDLEWARE = [
@@ -100,7 +101,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 ############Comproba se furruncha####################
-#Esto é para que non me de error a hora de completar os formularios
+#Esto é para que non me de error a hora de completar os formularios no móbil
 CSRF_TRUSTED_ORIGINS = ['https://novaera.gal']
 
 #-------------------start---------database local configuration---------------------
@@ -245,4 +246,8 @@ AWS_DEFAULT_ACL = None
 
 #Vídeo espectacular que che explica como facer push en GitHub.
 #  https://www.youtube.com/watch?v=qMck70tLDuo
-
+# git init (Crea a carpeta .git na carpeta)
+# git status (Para ver os arquivos que teñen cambios)
+# git add . (Para añadir os arquivos a carpeta git init e logo subilos)
+# git commit -m "nome_do_commit"
+# git push origin main

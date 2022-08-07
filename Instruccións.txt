@@ -15,3 +15,8 @@ from artigos.models import artigos
 ¿Cómo crear o archivo de requirements.txt necesario para facer o deploy en Heroku?
 
 pip freeze > requirements.txt
+
+¿Como gestionar as contraseñas do .env file sen necesidad de subilo a git hub?
+En heroku, podes configurar as contraseñas que son necesarias para que app acceda ao s3 (aws) e demais cousas que fagan falta.
+
+En heroku, tes que ir a settings "Reveal Config Vars", e aí metes a key e o contrasinal
