@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     
 ]
 
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -240,5 +242,7 @@ AWS_DEFAULT_ACL = None
 #pip freeze > requirements.txt
 
 #Cando fas un cambio no modelo e tes que replicalo na base de datos de Heroku
-#Prba
+
+#Vídeo espectacular que che explica como facer push en GitHub.
+#  https://www.youtube.com/watch?v=qMck70tLDuo
 
