@@ -207,6 +207,14 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_LOCATION = 'static'
 STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
+AWS_MEDIA='mediafiles'
+#MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
+MEDIA_ROOT = f'https://bandadegaitas-novaera/{AWS_MEDIA}/'
+
+#MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 #Esto é "AWS_QUERYSTRING_AUTH = False" é IMPORTANTÍSIMO. O checkeditor(rich text) do artigos content
 #que permite introducir o texto con estilo, párrafos e demais cousas non funcion. Eu creo que os arquivos
 #estáticos que están relacionados con este paquete cando están subidos ao S3 (AWS) nn funcionan ben.
@@ -228,12 +236,6 @@ AWS_QUERYSTRING_AUTH = False
 #STATICFILES_DIRS=[
 #    BASE_DIR / "NovaEra/static/"
 #]
-
-#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
-MEDIA_URL='/mediafiles/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
-MEDIA_ROOT = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #Upload static files ato S3 (AWS)
 # https://www.youtube.com/watch?v=nzLMA9WZqMM&t=179s
