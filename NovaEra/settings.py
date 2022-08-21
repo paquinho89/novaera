@@ -33,7 +33,7 @@ print ("base dir path", BASE_DIR)
 SECRET_KEY = config('production_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
@@ -60,10 +60,11 @@ INSTALLED_APPS = [
     #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
     'ckeditor_uploader',
+    #'tinymce',
+    'geeks',
     'entradas',
     #app para renderizar un pdf. Aunque estou vendo e senon inclúes a app eiqui tamén che funciona.
     'render_pdf'
-    
 ]
 
 # ESto é para o cheditor que me estaba dando error
@@ -208,12 +209,17 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_LOCATION = 'static'
 STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#Esto é "AWS_QUERYSTRING_AUTH = False" é IMPORTANTÍSIMO. O checkeditor(rich text) do artigos content
+#que permite introducir o texto con estilo, párrafos e demais cousas non funcion. Eu creo que os arquivos
+#estáticos que están relacionados con este paquete cando están subidos ao S3 (AWS) nn funcionan ben.
+#Por eso, con esta liña de código as cousas non dan problemas e temos o rich text cando todo está en production
+AWS_QUERYSTRING_AUTH = False
 
 #Fase de desarrollo
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 #Este código é para os arquivos estáticos como as imaxes... para cargalas tamén en Heroku
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
