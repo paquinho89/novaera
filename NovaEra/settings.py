@@ -60,8 +60,6 @@ INSTALLED_APPS = [
     #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
     'ckeditor_uploader',
-    #'tinymce',
-    'geeks',
     'entradas',
     #app para renderizar un pdf. Aunque estou vendo e senon inclúes a app eiqui tamén che funciona.
     'render_pdf'
