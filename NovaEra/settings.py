@@ -231,7 +231,9 @@ AWS_QUERYSTRING_AUTH = False
 
 #ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
 MEDIA_URL='/mediafiles/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
+#MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
+MEDIA_ROOT = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #Upload static files ato S3 (AWS)
 # https://www.youtube.com/watch?v=nzLMA9WZqMM&t=179s
