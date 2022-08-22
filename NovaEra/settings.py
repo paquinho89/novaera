@@ -198,28 +198,35 @@ AWS_S3_SIGNATURE_VERSION = 's3v4'
 AWS_ACCESS_KEY_ID = config('aws_key_id')
 AWS_SECRET_ACCESS_KEY = config('aws_secret_key')
 AWS_STORAGE_BUCKET_NAME = config('aws_bucket_name')
-
-AWS_S3_FILE_OVERWRITE = True
-AWS_DEFAULT_ACL = None
-#En AWS (S3) é onde se van a gardar os arquivos que os usuarios da web van a subir
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#Esto é para referirse os arquivos estáticos da páxina web.
-AWS_LOCATION = 'static'
-STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
-AWS_MEDIA='mediafiles'
-#MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
-MEDIA_ROOT = f'https://bandadegaitas-novaera/{AWS_MEDIA}/'
-
-#MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 #Esto é "AWS_QUERYSTRING_AUTH = False" é IMPORTANTÍSIMO. O checkeditor(rich text) do artigos content
 #que permite introducir o texto con estilo, párrafos e demais cousas non funcion. Eu creo que os arquivos
 #estáticos que están relacionados con este paquete cando están subidos ao S3 (AWS) nn funcionan ben.
 #Por eso, con esta liña de código as cousas non dan problemas e temos o rich text cando todo está en production
 AWS_QUERYSTRING_AUTH = False
+AWS_S3_FILE_OVERWRITE = True
+AWS_DEFAULT_ACL = None
+#En AWS (S3) é onde se van a gardar os arquivos que os usuarios da web van a subir
+#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
+AWS_MEDIA='mediafiles'
+#MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
+#IMPORTANTE. O MEDIA_URL creo que non che vale para nada. O que define onde se gardan os arquivos que a
+#xente sube e coa función "upload_image_path(instance, filename)" definida en artigos > models.py
+#MEDIA_URL = f'https://bandadegaitas-novaera/{AWS_MEDIA}/'
+#The DEFAULT_FILE_STORAGE setting allows you to set the storage to use by default. This eliminates the need
+#to assign `storages to individual fields, and eliminates the need to create migration files even if the 
+#storage changes. Esto do default_file storage indica onnde se gardan os media files
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#Esto é para referirse os arquivos estáticos da páxina web.
+AWS_LOCATION = 'static'
+STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+
+
+#MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 
 #Fase de desarrollo
 # Static files (CSS, JavaScript, Images)
