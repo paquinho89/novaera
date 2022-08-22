@@ -33,7 +33,7 @@ print ("base dir path", BASE_DIR)
 SECRET_KEY = config('production_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
@@ -101,7 +101,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 ############Comproba se furruncha####################
 #Esto é para que non me de error a hora de completar os formularios no móbil
-CSRF_TRUSTED_ORIGINS = ['https://novaera.gal']
+CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal']
 CSRF_COOKIE_SECURE = False
 
 
@@ -137,7 +137,7 @@ import dj_database_url
 
 # db_from_env = dj_database_url.config(conn_max_age=600)
 # DATABASES['default'].update(db_from_env)
-#Esto é para conectar tamén ca base de datos de Heroku
+# Esto é para conectar tamén ca base de datos de Heroku
 #DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 #------end-------Heroku database configuration------------------
 
