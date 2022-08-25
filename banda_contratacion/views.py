@@ -37,7 +37,7 @@ def contratacion_view(request):
       contratante_tipoevento = request.POST['tipo_evento']
       contratante_data = request.POST['data_evento']
       contratante_lugar = request.POST['lugar_evento']
-      contratante_telefono = request.POST['telefono']
+      contratante_telefono = request.POST['teléfono']
       contratante_nome = request.POST['nome']
       contratante_email = request.POST['correo_electrónico']
       contratante_info = request.POST['mais_info']

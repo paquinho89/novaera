@@ -100,12 +100,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 ############Comproba se furruncha####################
-#Esto é para que non me de error a hora de completar os formularios no móbil
+#Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
 CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal']
 CSRF_COOKIE_SECURE = False
 
 
 #-------------------start---------database local configuration---------------------
+#ESTE VÍDEO ESTÁ DE PUTA MADRE PARA CONFIGURAR AS TABLAS DO DATABASE TANTO EN HEROKU COMO EN AWS
+#EU VOU METER AS TABLAS EN AWS
+#https://www.youtube.com/watch?v=TFFtDLZnbSs&t=179s
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
