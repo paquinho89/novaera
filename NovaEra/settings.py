@@ -21,6 +21,8 @@ from decouple import config
 
 import banda_contratacion
 
+PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 print ("base dir path", BASE_DIR)
