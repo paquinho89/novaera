@@ -273,4 +273,4 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # git status (Para ver os arquivos que teñen cambios)
 # git add . (Para añadir os arquivos a carpeta git init e logo subilos)
 # git commit -m "nome_do_commit"
-## git push origin main
+# git push origin main
