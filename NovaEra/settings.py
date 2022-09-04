@@ -21,7 +21,7 @@ from decouple import config
 
 import banda_contratacion
 
-PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +38,7 @@ SECRET_KEY = config('production_secret_key')
 DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'novaera.gal', 'www.novaera.gal', 'web-production-5e66.up.railway.app']
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
 
 # Application definition
 
@@ -101,7 +101,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
-############Comproba se furruncha####################
+
 #Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
 CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal']
 CSRF_COOKIE_SECURE = False
@@ -109,8 +109,10 @@ CSRF_COOKIE_SECURE = False
 
 #-------------------start---------database local configuration---------------------
 #ESTE VÍDEO ESTÁ DE PUTA MADRE PARA CONFIGURAR AS TABLAS DO DATABASE TANTO EN HEROKU COMO EN AWS
-#EU VOU METER AS TABLAS EN AWS
+#EU VOU METER AS TABLAS EN Heroku postgres
 #https://www.youtube.com/watch?v=TFFtDLZnbSs&t=179s
+# Vídeo para conectar as tablas de heroku (postgre heroku con postgresql (ferramenta local))
+# https://www.youtube.com/watch?v=MLow0gI6oNY&t=526s
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
@@ -126,16 +128,16 @@ DATABASES = {
 #------start-------Heroku database configuration------------------
 #Estos atributos cóllelos de Heroku: https://data.heroku.com/datastores/6c90a2e4-c751-4984-a3b7-89ac7b9e5692#administration
 #Esto é para conectar ca base de datos de heroku e todos os datos da app se garden nesta base de datos que facilita heroku
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': config('name_heroku_database'),
-#         'USER': config('user_heroku_database'),
-#         'PASSWORD': config('password_heroku_database'),
-#         'HOST': config('host_heroku_database'),
-#         'PORT': '5432',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('name_heroku_database'),
+        'USER': config('user_heroku_database'),
+        'PASSWORD': config('password_heroku_database'),
+        'HOST': config('host_heroku_database'),
+        'PORT': '5432',
+    }
+}
 
 
 import dj_database_url
