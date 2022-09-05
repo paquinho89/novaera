@@ -39,8 +39,8 @@ SECRET_KEY = config('production_secret_key')
 DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-#ALLOWED_HOSTS = ['.herokuapp.com','novaera.herokuapp.com' '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.herokuapp.com','novaera.herokuapp.com' '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
+#ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
