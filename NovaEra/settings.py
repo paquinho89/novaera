@@ -21,7 +21,8 @@ from decouple import config
 
 import banda_contratacion
 
-
+#UN VÍDEO MUI INTERESANTE PARA FACER O DEPLOY INTO HEROKU
+# https://www.youtube.com/watch?v=5d8AQFF0Ot0&t=555s
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,7 @@ SECRET_KEY = config('production_secret_key')
 DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
+ALLOWED_HOSTS = ['.herokuapp.com','novaera.herokuapp.com' '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
 
 # Application definition
 
@@ -117,12 +118,12 @@ CSRF_COOKIE_SECURE = False
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
 # comando: python manage.py migrate --run-syncdb
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 #-------------------end---------database local configuration---------------------
 
 #------start-------Heroku database configuration------------------
