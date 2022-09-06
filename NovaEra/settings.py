@@ -39,7 +39,7 @@ SECRET_KEY = config('production_secret_key')
 DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-ALLOWED_HOSTS = ['.herokuapp.com','novaera.herokuapp.com' '127.0.0.1', 'novaera.gal', 'www.novaera.gal']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com','novaera.herokuapp.com', 'novaera.gal', 'www.novaera.gal']
 #ALLOWED_HOSTS = ['*']
 # Application definition
 
@@ -109,15 +109,10 @@ CSRF_COOKIE_SECURE = False
 
 
 #-------------------start---------database local configuration---------------------
-#ESTE VÍDEO ESTÁ DE PUTA MADRE PARA CONFIGURAR AS TABLAS DO DATABASE TANTO EN HEROKU COMO EN AWS
-#EU VOU METER AS TABLAS EN Heroku postgres
-#https://www.youtube.com/watch?v=TFFtDLZnbSs&t=179s
-# Vídeo para conectar as tablas de heroku (postgre heroku con postgresql (ferramenta local))
-# https://www.youtube.com/watch?v=MLow0gI6oNY&t=526s
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
-# comando: python manage.py migrate --run-syncdb
+# comando: "python manage.py migrate --run-syncdb"
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -126,9 +121,20 @@ CSRF_COOKIE_SECURE = False
 # }
 #-------------------end---------database local configuration---------------------
 
-#------start-------Heroku database configuration------------------
+#--------------------------start-------Heroku POSTGRES database configuration------------------
 #Estos atributos cóllelos de Heroku: https://data.heroku.com/datastores/6c90a2e4-c751-4984-a3b7-89ac7b9e5692#administration
 #Esto é para conectar ca base de datos de heroku e todos os datos da app se garden nesta base de datos que facilita heroku
+
+# EU VOU METER AS TABLAS EN Heroku postgres
+# https://www.youtube.com/watch?v=TFFtDLZnbSs&t=179s
+# Lémbrate que unha vez que estableciches a base de datos en heroku postgres, tes que migrar as tablas ao postgres de heroku. 
+# Co comando "heroku run python manage.py migrate --run-syncdb" todas as tabelas migraranse no postgres de heroku
+# Vídeo para conectar as tablas de heroku con pgAdmin (programa que tes no teu ordenador) e así podes consultar todos os datos que a xente foi cargando na páxina
+# https://www.youtube.com/watch?v=MLow0gI6oNY&t=526s
+
+# TO CREATE A SUPER USER ONCE THE DATABASE IS ON HEROKU POSTGRES:
+# "heroku run python manage.py createsuperuser"
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -140,14 +146,14 @@ DATABASES = {
     }
 }
 
-
 import dj_database_url
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 # Esto é para conectar tamén ca base de datos de Heroku
 DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
-#------end-------Heroku database configuration------------------
+
+#-----------------------end-------Heroku database configuration------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
