@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Intro settings -->
+<style>
+  /*Esto é para darlle formato as mensaxes de error*/
+  .alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    position:absolute;
+    position: sticky;
+    top: 0
+  }
+  #newsletter_message_error_artigos {
+    color:red;
+  }
+  #intro {
+    /* Margin to fix overlapping fixed navbar */
+    margin-top: 70px;
+  }
+  /*Esto é para axustar o tamañano da imaxe en cada card*/
+  .card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    }
+    div time{
+        format: "dd/mm/yyyy"
+    }
+  @media (max-width: 991px) {
+    #intro {
+      /* Margin to fix overlapping fixed navbar */
+      margin-top: 45px;
+    }
+}
+</style>
+
+<br>
+
+<div class="container mt-5">
+    <section class="text-center">
+        <h3 class="mb-3"><strong>Os nosos artigos</strong></h3>
+        <div class='row d-flex align-items-stretch'>
+        {% for artigo in artigos_autores %}
+          {% include 'artigo_card.html' with instance=artigo %}         
+        {% endfor %}
+        </div> 
+    </section>
+</div>
+
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<!--Footer-->
+{% include 'base/footer.html' %}
+<!--Footer-->
+
+
+{% endblock content %}

@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %} 
+<style>
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+<!-- Gallery -->
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+        <figure class="figure">
+            <img
+                src='{% static "Maios_1.jpg" %}'
+                class="w-10 shadow-1-strong rounded mb-1"
+                alt="Boat on Calm Water"
+            />
+        <figcaption class="figure-caption">Foto 1: Maio realizado por Nova Era</figcaption>
+        </figure>
+        <figure class="figure">
+            <img
+                src='{% static "Maios_2.jpg" %}'
+                class="w-10 shadow-1-strong rounded mb-1"
+                alt="Wintry Mountain Landscape"
+            />
+        <figcaption class="figure-caption">Foto 2: O noso trompetista máis pequeno atendendo o posto de Nova Era na Feira dos Maios</figcaption>
+        </figure>
+    </div>
+    
+    <div class="col-lg-4 mb-4 mb-lg-0">
+        <figure class="figure">
+            <img
+                src='{% static "Maios_3.jpg" %}'
+                class="w-10 shadow-1-strong rounded mb-1"
+                alt="Mountains in the Clouds"
+            />
+            <figcaption class="figure-caption">Foto 3: Visitantes observan o Maio</figcaption>
+        </figure>
+        <figure class="figure">
+            <img
+                src='{% static "Solaina_1.jpg" %}'
+                class="w-1 shadow-1-strong rounded mb-1"
+                alt="Boat on Calm Water"
+            />
+        <figcaption class="figure-caption">Foto 4: Instantánea tomada despois da actuación de Nova Era no IV cumpleanos do centro de día "Solleira"</figcaption>
+        </figure>
+    </div>
+  
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <figure class="figure">
+            <img
+                src='{% static "Solaina_2.jpg" %}'
+                class="w-1 shadow-1-strong rounded mb-1"
+                alt="Waves at Sea"
+            />
+        <figcaption class="figure-caption">Foto 5: Nova Era actuando no centro de día "Solleira"</figcaption>
+        </figure>
+        <figure class="figure">
+            <img
+                src='{% static "Vibra_1.jpg" %}'
+                class="w-1 shadow-1-strong rounded mb-1"
+                alt="Yosemite National Park"
+            />
+        <figcaption class="figure-caption">Foto 6: Un dos directores de Nova Era no taller de percusión tradicional</figcaption>
+        </figure>
+    </div>
+
+    <div class="col-lg-6 mb-4 mb-lg-0">
+        <figure class="figure">
+            <img
+                src='{% static "Vibra_2.jpg" %}'
+                class="w-1 shadow-1-strong rounded mb-1"
+                alt="Waves at Sea"
+            />
+        <figcaption class="figure-caption">Foto 7: Membros de Nova Era impartindo un taller de percusión tradicional</figcaption>
+        </figure>
+    </div>
+  </div>
+  <!-- Gallery -->
+{% endblock content %}

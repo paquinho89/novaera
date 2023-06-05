@@ -1,0 +1,39 @@
+
+{% load static %}
+
+<body>
+{% include 'base/nav_bar.html' %}
+
+<!--Esto é para que mostre mensaxes cando se completa ben o formulario de contratación ou cando se engade un comentario no blog-->
+<div id="content" class="mt-5 fixed-top">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} m-2 mt-1" id="msg" role="alert">
+                <strong>{{ message }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<!---------------------------------------------------------------------------------------------------------------------------------------------------------->
+{% block content %} 
+
+{% endblock content %}
+</body>
+
+<!--Eiqui estou decindo canto tempo ten que estar a alerta unha vez que se completou a acción-->
+<!--O 9000 está a endicar o tempo que está a alerta visible. Despois a alerta desaparece.-->
+<script>
+    setTimeout(function(){
+        if ($('#msg').length > 0) {
+            $('#msg').remove();
+        }
+    }, 8000)
+</script>
+
+
+
+
+
+
+
+

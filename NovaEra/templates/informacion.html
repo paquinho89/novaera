@@ -1,0 +1,510 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /*Este CSS é para que me poña en vermello as alertas dos forms cando salen mal*/
+    .alert-error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+        position:absolute;
+        position: sticky;
+        top: 0
+      }
+    #newsletter_message_error_historia{
+      color: red;
+    }
+    body{
+        background:#dcdcdc;
+        margin-top:20px;
+    }
+    .timeline {
+        position: relative;
+        padding: 20px 0;
+        list-style: none;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .timeline:before {
+        content: " ";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 3px;
+        margin-left: -1.5px;
+        background-color: #e9ecef;
+    }
+    .timeline > .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    .timeline > .timeline-item:after,
+    .timeline > .timeline-item:before {
+        content: " ";
+        display: table;
+    }
+    .timeline > .timeline-item:after {
+        clear: both;
+    }
+    .timeline > .timeline-item > .timeline-panel {
+        float: left;
+        position: relative;
+        width: 46%;
+        padding: 20px;
+        border: 1px solid #e9ecef;
+        border-radius: 2px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    }
+    .timeline > .timeline-item > .timeline-panel:before {
+        content: " ";
+        display: inline-block;
+        position: absolute;
+        top: 26px;
+        right: -8px;
+        border-color: transparent #e9ecef;
+        border-style: solid;
+        border-width: 8px 0 8px 8px;
+    }
+    .timeline > .timeline-item > .timeline-panel:after {
+        content: " ";
+        display: inline-block;
+        position: absolute;
+        top: 27px;
+        right: -7px;
+        border-color: transparent #fff;
+        border-style: solid;
+        border-width: 7px 0 7px 7px;
+    }
+    .timeline > .timeline-item > .timeline-badge {
+        z-index: 10;
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        margin-left: -25px;
+        border-radius: 50% 50% 50% 50%;
+        text-align: center;
+        font-size: clamp(10px, 50% + 20px, 20px);
+        line-height: 50px;
+        color: #fff;
+        overflow: hidden;
+    }
+    .timeline > .timeline-item.timeline-inverted > .timeline-panel {
+        float: right;
+    }
+    .timeline > .timeline-item.timeline-inverted > .timeline-panel:before {
+        right: auto;
+        left: -8px;
+        border-right-width: 8px;
+        border-left-width: 0;
+    }
+    .timeline > .timeline-item.timeline-inverted > .timeline-panel:after {
+        right: auto;
+        left: -7px;
+        border-right-width: 7px;
+        border-left-width: 0;
+    }
+    .timeline-badge.primary {
+        background-color: #7460ee;
+    }
+    .timeline-badge.success {
+        background-color: #39c449;
+    }
+    .timeline-badge.warning {
+        background-color: #ffbc34;
+    }
+    .timeline-badge.danger {
+        background-color: #f62d51;
+    }
+    .timeline-badge.info {
+        background-color: #009efb;
+    }
+    .timeline-title {
+        margin-top: 0;
+        color: inherit;
+        font-weight: 400;
+    }
+    .timeline-body > p,
+    .timeline-body > ul {
+        margin-bottom: 0;
+    }
+    .timeline-left:before {
+        left: 30px;
+    }
+    .timeline-left > .timeline-item > .timeline-badge {
+        left: 30px;
+        top: 9px;
+    }
+    .timeline-left > .timeline-item > .timeline-panel {
+        width: calc(100% - 80px);
+    }
+    .timeline-right:before {
+        right: 30px;
+        left: auto;
+    }
+    .timeline-right > .timeline-item > .timeline-badge {
+        right: 5px;
+        top: 9px;
+        left: auto;
+    }
+    .timeline-right > .timeline-item > .timeline-panel {
+        width: calc(100% - 80px);
+    }
+    /*#fito_1_img {
+        max-height: 80%; 
+        max-height: 50vh; //50% of user's viewport height
+    }*/
+    
+</style>
+<br>
+<br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+<div class="container">
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <ul class="timeline timeline-right">
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary"><p>2014</p></div>
+                        
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Nace o concepto "Nova Era"</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i> 27 de Outubro do 2014</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img id="fito_1_img" src='{% static "Fito_1.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        A Banda de Gaitas Nova Era realiza o seu primeiro ensaio. Comezamos a traballar!
+                                      </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2015</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Presentación</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>13 de Maio do 2015</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_2.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Presentación da banda na XXX Xuntanza Internacional de Gaiteiros no Castelo de Monterrei.
+                                      </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2016</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">O primeiro espectáculo</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>23 de Decembro do 2016</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_3.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Presentación do espectáculo “Unha volta ao redor do mundo”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2017</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Ortigueira</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>15 de Xullo do 2017</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_4.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Actuación no Festival de Ortigueira con Óscar Ibáñez & Tribo.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2017</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Pandeirada de Lume</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>23 de Decembro do 2017</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_5.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Presentación do espectáculo “Pandeirada de lume”
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2018</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Presentamos NovaEra en Centro Europa</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>Agosto do 2018</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_6.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Viaxe a Strakönice (República Checa) para participar en representación de Galicia no  Mezinárodní dudácký festival.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2018</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Comézase a materializar o traballo</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>Outubro do 2018</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_7.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Inicio de gravación do traballo discográfico “Rumbo NE”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2018</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Winter has come</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>22 de Decembro do 2018</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_9.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Presentación do espectáculo “Winter has come”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2019</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Unha data para lembrar</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>28 de Decembro do 2019</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_8.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Presentación do traballo discográfico “Rumbo NE”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2020</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">"Rumbo NE" chega á rede</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>28 de Xaneiro do 2020</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_10.png" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Lanzamento nas plataformas dixitais do CD “Rumbo NE”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2021</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Novo EP</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>10 de Marzo do 2021</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_11.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Lanzamento nas plataformas dixitais do EP “Outros Compases: Cara A”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                        </div>
+                    </li>
+                    <li class="timeline-item">
+                        <div class="timeline-badge primary">2022</div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Continuamos</h4>
+                                <p>
+                                    <small class="text-muted"><i class="fa fa-clock-o"></i>16 de Abril do 2022</small>
+                                </p>
+                            </div>
+                            <section>
+                                <div class="row">
+                                  <div class="col-md-6 gx-4 mb-4">
+                                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                                      <img src='{% static "Fito_12.jpg" %}' class="img-fluid rounded mx-auto" />
+                                      <a href="#!">
+                                      </a>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6 gx-8 mb-4">
+                                    <p class="text-muted">
+                                        Presentación do espectáculo “Voces dunha nova era”.
+                                    </p>
+                                  </div>
+                                </div>
+                            </section>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<!--Footer-->
+{% include 'base/footer.html' %}
+<!--Footer-->
+
+{% endblock content %}
+

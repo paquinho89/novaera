@@ -1,0 +1,22 @@
+INSTRUCCIÓN
+
+¿Cómo crear un proxecto en Django?
+Tes que executar na liña de comandos de Windows o siguiente comando:
+	python -m django startproject NomeProxecto
+
+
+¿Cómo traballar ca shell e importar os modelos e velos?
+
+na línea de comandos da terminal escribimos o seguinte:
+python manage.py shell
+#Temos o model artigos. Pois entón facemos:
+from artigos.models import artigos
+
+¿Cómo crear o archivo de requirements.txt necesario para facer o deploy en Heroku?
+
+pip freeze > requirements.txt
+
+¿Como gestionar as contraseñas do .env file sen necesidad de subilo a git hub?
+En heroku, podes configurar as contraseñas que son necesarias para que app acceda ao s3 (aws) e demais cousas que fagan falta.
+
+En heroku, tes que ir a settings "Reveal Config Vars", e aí metes a key e o contrasinal

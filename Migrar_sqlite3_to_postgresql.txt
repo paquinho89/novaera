@@ -1,0 +1,16 @@
+Unha vez que fixeches toda a configuración de Heroku, unha das cousas mais importantes que temos que facer e pasar as tablas
+que temos no development evioronment ao production enviroment.
+ESTA CONFIGURACIÓN É MELLOR QUE A FAGAS CO ORDENADOR PERSONAL PARA EVITAR ROLLOS DE FIREWALL E COUSAS ASÍ
+
+Para pasar estas tablas temos que conectarnos coa base de datos de Heroku (que traballa con Postgres sql) e pasar os datos que temos no noso db.sqlite3
+E dicir temos que migrar os datos de SQLIte to PostgreSQL. 
+Tutorial:
+https://www.youtube.com/watch?v=BGEEzjGadYI&t=4s
+Comandos
+pip install psycopg2
+python manage.py dumpdata > data.json
+python manage.py migrate --run-syncdb
+
+Despois temos que crear un superuser con heroku
+heroku run python manage.py createsuperuser
+

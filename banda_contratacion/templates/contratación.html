@@ -1,0 +1,442 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %} 
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<style>
+/*Este CSS é para que me poña en vermello as alertas dos forms cando salen mal*/
+.alert-error {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  position:absolute;
+  position: sticky;
+  top: 0
+}
+body {
+  color: #000;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: #fff;
+  background-repeat: no-repeat
+}
+.plus-minus {
+    position: relative
+}
+
+.plus {
+    position: absolute;
+    top: -4px;
+    left: 2px;
+    cursor: pointer
+}
+
+.minus {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    cursor: pointer
+}
+
+.vsm-text:hover {
+    color: #FF5252
+}
+
+.book,
+.book-img {
+    width: 120px;
+    height: 180px;
+    border-radius: 5px
+}
+
+.book {
+    margin: 20px 15px 5px 15px
+}
+
+.border-top {
+    border-top: 1px solid #EEEEEE !important;
+    margin-top: 20px;
+    padding-top: 15px
+}
+
+.card {
+    margin: 40px 0px;
+    padding: 40px 50px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.2)
+}
+
+input,
+textarea {
+    background-color: #F3E5F5;
+    padding: 8px 15px 8px 15px;
+    width: 100%;
+    border-radius: 5px !important;
+    box-sizing: border-box;
+    border: 1px solid #F3E5F5;
+    font-size: 15px !important;
+    color: #000 !important;
+    font-weight: 300
+}
+
+input:focus,
+textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #9FA8DA;
+    outline-width: 0;
+    font-weight: 400
+}
+
+button:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    outline-width: 0
+}
+
+.pay {
+    width: 80px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #673AB7;
+    margin: 10px 20px 10px 0px;
+    cursor: pointer;
+    box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.2)
+}
+
+.gray {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+    color: #E0E0E0
+}
+
+.gray .pay {
+    box-shadow: none
+}
+
+#tax {
+    border-top: 1px lightgray solid;
+    margin-top: 10px;
+    padding-top: 10px
+}
+
+.btn-blue {
+    border: none;
+    border-radius: 10px;
+    background-color: #673AB7;
+    color: #fff;
+    padding: 8px 15px;
+    margin: 20px 0px;
+    cursor: pointer
+}
+
+.btn-blue:hover {
+    background-color: #311B92;
+    color: #fff
+}
+
+#checkout {
+    float: left
+}
+
+#check-amt {
+    float: right
+}
+
+@media screen and (max-width: 768px) {
+
+    .book,
+    .book-img {
+        width: 100px;
+        height: 150px
+    }
+
+    .card {
+        padding-left: 15px;
+        padding-right: 15px
+    }
+
+    .mob-text {
+        font-size: 13px
+    }
+
+    .pad-left {
+        padding-left: 20px
+    }
+}
+</style>
+
+<section>
+  <br>
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="container px-4 py-5 mx-auto mt-5">
+      <div class="row d-flex justify-content-center">
+          <div class="col-4">
+              <h4 class="mob-text heading">Conxunto</h4>
+          </div>
+          <div class="col-8">
+            <div class="row text-right">
+                <div class="col-5">
+                    <h6 class="mob-text mt-2">Músicos</h6>
+                </div>
+                <div class="col-2">
+                    <h6 class="mob-text mt-2">Nº</h6>
+                </div>
+                <div class="col-5">
+                  <h6 class="mob-text mt-2">Selección</h6>
+        
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top mb-5">
+          <div class="my-auto col-4">
+            <div class="row text-right">
+              <h6 class="mob-text">Banda</h6>
+            </div>    
+          </div>
+          <div class="my-auto col-8">
+              <div class="row text-right">
+                <div class="col-5">
+                    <p class="mob-text">Banda</p>
+                </div>
+                <div class="col-2">
+                    <div class="row d-flex justify-content-center">
+                        <p class="mb-0 mob-text" id="cnt1">+15</p>
+                    </div>
+                </div>
+                <div class="form-check col-2">
+                   {{ form.toda_banda }}
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top">
+        <div class="col-4">
+          <div class="row d-flex">
+            <div class="my-auto flex-column d-flex pad-left">
+              <h6 class="mob-text">Cuarteto tradicional</h6>
+            </div>
+          </div>
+        </div>
+        <div class="my-auto col-8">
+          <div class="row text-right">
+            <div class="col-5">
+                <p class="mob-text">2 gaitas<br>1 tambor<br>1 bombo ou pandeireta</p>
+            </div>
+            <div class="col-2">
+                <div class="row d-flex justify-content-center">
+                    <p class="mb-0 mob-text" id="cnt2">4</p>
+                </div>
+            </div>
+            <div class="form-check col-2">
+               {{ form.cuarteto }}
+            </div>
+          </div>
+      </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top">
+        <div class="col-4">
+          <div class="row d-flex">  
+            <div class="my-auto flex-column d-flex pad-left">
+                <h6 class="mob-text">Terceto tradicional</h6>
+                <p class="mob-text">Opción 1</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-auto col-8">
+          <div class="row text-right">
+            <div class="col-5">
+              <p class="mob-text">1 gaita<br>1 tambor<br>1 bombo ou pandeireta</p>
+            </div>
+            <div class="col-2">
+              <div class="row d-flex justify-content-center">
+                <p class="mb-0 mob-text" id="cnt2">3</p>
+              </div>
+            </div>
+            <div class="form-check col-2">
+              {{ form.terceto_opcion_1 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top">
+        <div class="col-4">
+          <div class="row d-flex">  
+            <div class="my-auto flex-column d-flex pad-left">
+                <h6 class="mob-text">Terceto tradicional</h6>
+                <p class="mob-text">Opción 2</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-auto col-8">
+          <div class="row text-right">
+            <div class="col-5">
+              <p class="mob-text">2 gaitas<br>1 tambor</p>
+            </div>
+            <div class="col-2">
+              <div class="row d-flex justify-content-center">
+                <p class="mb-0 mob-text" id="cnt2">3</p>
+              </div>
+            </div>
+            <div class="form-check col-2">
+              {{ form.terceto_opcion_2 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top">
+        <div class="col-4">
+          <div class="row d-flex">  
+            <div class="my-auto flex-column d-flex pad-left">
+                <h6 class="mob-text">Dúo</h6>
+                <p class="mob-text">Opción 1</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-auto col-8">
+          <div class="row text-right">
+            <div class="col-5">
+              <p class="mob-text">1 gaita<br>1 tambor</p>
+            </div>
+            <div class="col-2">
+              <div class="row d-flex justify-content-center">
+                <p class="mb-0 mob-text" id="cnt2">2</p>
+              </div>
+            </div>
+            <div class="form-check col-2">
+              {{ form.duo_opcion_1 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top">
+        <div class="col-4">
+          <div class="row d-flex">  
+            <div class="my-auto flex-column d-flex pad-left">
+                <h6 class="mob-text">Dúo</h6>
+                <p class="mob-text">Opción 2</p>
+            </div>
+          </div>
+        </div>
+        <div class="my-auto col-8">
+          <div class="row text-right">
+            <div class="col-5">
+              <p class="mob-text">2 gaitas</p>
+            </div>
+            <div class="col-2">
+              <div class="row d-flex justify-content-center">
+                <p class="mb-0 mob-text" id="cnt2">2</p>
+              </div>
+            </div>
+            <div class="form-check col-2">
+              {{ form.duo_opcion_2 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center border-top">
+        <div class="col-4">
+          <div class="row d-flex">  
+            <div class="my-auto flex-column d-flex pad-left">
+              <h6 class="mob-text">Solista</h6>
+            </div>
+          </div>
+        </div>
+        <div class="my-auto col-8">
+          <div class="row text-right">
+            <div class="col-5">
+              <p class="mob-text">1 gaita</p>
+            </div>
+            <div class="col-2">
+              <div class="row d-flex justify-content-center">
+                <p class="mb-0 mob-text" id="cnt2">1</p>
+              </div>
+            </div>
+            <div class="form-check col-2">
+              {{ form.conxunto }}
+              <label class="form-check-label" for="flexRadioDefault2">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card">
+          
+            
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="row px-2 mb-4">
+                  <div class="dropdown col-md-4"><label class="form-control-label">Tipo evento</label>{{ form.tipo_evento }}</div>
+                    <div id="date-picker-example" class="md-form md-outline input-with-post-icon datepicker col-md-4">
+                      <label>Data evento</label>
+                        <input type="date" data-date-format="DD MMMM YYYY" value="Date" data-date={{ form.data_evento }}
+                    </div>
+                  <div class="form-group col-md-4">
+                    <label for="exampleInputEmail1">Lugar do evento</label>
+                    {{ form.lugar_evento }}
+                  </div>
+                </div>
+                <div class="row px-2">
+                  <div class="form-group col-md-4"> <label class="form-control-label">Nome</label> {{ form.nome }} </div>
+                  <div class="form-group col-md-4"> <label class="form-control-label">Teléfono</label> {{ form.teléfono }} </div>
+                  <div class="form-group col-md-4"> <label class="form-control-label">Correo electrónico</label> {{ form.correo_electrónico }} </div>
+                </div>
+                <div class = "row px-3">
+                  <div class="form-group col-md-12 mt-3"> <label class="form-control-label">Algo máis que nos queira comentar?:</label> {{ form.mais_info }} </div>
+                </div>
+              </div>
+              <div class="col-lg-4 align-self-end mb-4" id="tax">
+                <div class="row d-flex justify-content-between px-4">
+                  <button type="submit" class="btn btn-dark mt-3"> Contactar con nós</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+
+</section>
+
+
+<!-- O MELLOR ESTE CÓDIGO PODESE ELIMINAR-->
+<!-- ESTO VALE PARA QUE SE DEPLEGUEN OS DROPDOWNS, SEN ESTO NON FUNCIONA -->
+<!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+  
+
+
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<!--Footer-->
+{% include 'base/footer.html' %}
+<!--Footer-->
+
+{% endblock content %} 
+
