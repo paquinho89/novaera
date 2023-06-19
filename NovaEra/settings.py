@@ -113,22 +113,35 @@ CSRF_COOKIE_SECURE = False
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
 # comando: "python manage.py migrate --run-syncdb"
+
 # DATABASES = {
 #      'default': {
 #          'ENGINE': 'django.db.backends.sqlite3',
 #          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #      }
 #  }
+
 DATABASES = {
     'default': {
-        'ENGINE': config('engine_pg_admin'),
-        'NAME': config ('name_pg_admin'),
-        'USER': config ('user_pg_admin'), 
-        'PASSWORD': config ('password_pg_admin'),
-        'HOST': config ('host_pg_admin'), 
-        'PORT': config ('port_pg_admin'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'railway',
+        'USER': 'root', 
+        'PASSWORD': 'WBW0NGErDjQpxzPM7GCU',
+        'HOST': 'containers-us-west-146.railway.app', 
+        'PORT': '6505',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': config('engine_pg_admin'),
+#         'NAME': config ('name_pg_admin'),
+#         'USER': config ('user_pg_admin'), 
+#         'PASSWORD': config ('password_pg_admin'),
+#         'HOST': config ('host_pg_admin'), 
+#         'PORT': config ('port_pg_admin'),
+#     }
+# }
 
 #-------------------end---------database local configuration---------------------
 
