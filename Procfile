@@ -1,2 +1,1 @@
-web: gunicorn NovaEra.wsgi
-release: python manage.py migrate
+web: python manage.py migrate && gunicorn NovaEra.wsgi
