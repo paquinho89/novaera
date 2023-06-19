@@ -121,14 +121,15 @@ CSRF_COOKIE_SECURE = False
 #      }
 #  }
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
-        'USER': 'root', 
-        'PASSWORD': 'WBW0NGErDjQpxzPM7GCU',
-        'HOST': 'containers-us-west-146.railway.app', 
-        'PORT': '6505',
+        'USER': 'postgres', 
+        'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
+        'HOST': 'containers-us-west-3.railway.app', 
+        'PORT': '8027',
     }
 }
 
