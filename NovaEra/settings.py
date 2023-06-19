@@ -113,12 +113,24 @@ CSRF_COOKIE_SECURE = False
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
 # comando: "python manage.py migrate --run-syncdb"
+# DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.sqlite3',
+#          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#      }
+#  }
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     }
- }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'novaera_local_database', 
+        'USER': 'postgres', 
+        'PASSWORD': 'Meular-2',
+        'HOST': '127.0.0.1', 
+        'PORT': '5432',
+    }
+}
+
+
 #-------------------end---------database local configuration---------------------
 
 #--------------------------start-------Heroku POSTGRES database configuration------------------
@@ -148,10 +160,10 @@ DATABASES = {
 
 import dj_database_url
 
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config(conn_max_age=600)
+#DATABASES['default'].update(db_from_env)
 # Esto é para conectar tamén ca base de datos de Heroku
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+#DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
 #-----------------------end-------Heroku database configuration------------------
 
