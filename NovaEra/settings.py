@@ -39,8 +39,8 @@ SECRET_KEY = config('production_secret_key')
 DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com','novaera.herokuapp.com', 'novaera.gal', 'www.novaera.gal']
-#ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com','novaera.herokuapp.com', 'novaera.gal', 'www.novaera.gal']
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
@@ -121,15 +121,14 @@ CSRF_COOKIE_SECURE = False
 #  }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'novaera_local_database', 
-        'USER': 'postgres', 
-        'PASSWORD': 'Meular-2',
-        'HOST': '127.0.0.1', 
-        'PORT': '5432',
+        'ENGINE': config('engine_pg_admin'),
+        'NAME': config ('name_pg_admin'),
+        'USER': config ('user_pg_admin'), 
+        'PASSWORD': config ('password_pg_admin'),
+        'HOST': config ('host_pg_admin'), 
+        'PORT': config ('port_pg_admin'),
     }
 }
-
 
 #-------------------end---------database local configuration---------------------
 
