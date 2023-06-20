@@ -125,27 +125,27 @@ CSRF_COOKIE_SECURE = False
 
 #Vídeo to set up the Railway account with the postgres database
 #https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres', 
-        'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
-        'HOST': 'containers-us-west-3.railway.app', 
-        'PORT': '8027',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': config('engine_pg_admin'),
-#         'NAME': config ('name_pg_admin'),
-#         'USER': config ('user_pg_admin'), 
-#         'PASSWORD': config ('password_pg_admin'),
-#         'HOST': config ('host_pg_admin'), 
-#         'PORT': config ('port_pg_admin'),
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',
+#         'USER': 'postgres', 
+#         'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
+#         'HOST': 'containers-us-west-3.railway.app', 
+#         'PORT': '8027',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': config('engine_pg_admin'),
+        'NAME': config ('name_pg_admin'),
+        'USER': config ('user_pg_admin'), 
+        'PASSWORD': config ('password_pg_admin'),
+        'HOST': config ('host_pg_admin'), 
+        'PORT': config ('port_pg_admin'),
+    }
+}
 
 #-------------------end---------database local configuration---------------------
 
