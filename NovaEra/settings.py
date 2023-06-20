@@ -106,7 +106,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 
 #Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
-CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera-production.up.railway.app', 'https://novaera-production.up.railway.app*']
+CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera.up.railway.app', 'https://novaera.up.railway.app*']
 CSRF_COOKIE_SECURE = False
 
 
