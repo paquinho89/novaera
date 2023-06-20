@@ -89,7 +89,8 @@ class artigo_comments(models.Model):
     nome = models.CharField(blank=False, max_length=255)
     correo_electrónico = models.EmailField(blank=False, max_length=255, validators=[email_validation])
     comentario = models.TextField(blank=False)
-    date_added = models.DateTimeField (default=timezone.now, blank=True, null=True)
+    date_added = models.DateField (default=datetime.now, blank=True, null=True)
+    #date_added = models.DateTimeField (default=datetime.now, blank=True)
 
     #Esto é para que me ordene os comentarios na páxina por data
     class Meta:
