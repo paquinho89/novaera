@@ -15,6 +15,8 @@ from pathlib import Path
 import os
 import django_heroku
 import psycopg2
+import dj_database_url
+
 
 
 from decouple import config
@@ -104,7 +106,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 
 #Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
-CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal']
+CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera-production.up.railway.app/']
 CSRF_COOKIE_SECURE = False
 
 
@@ -115,11 +117,11 @@ CSRF_COOKIE_SECURE = False
 # comando: "python manage.py migrate --run-syncdb"
 
 # DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.sqlite3',
-#          'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#      }
-#  }
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 #Vídeo to set up the Railway account with the postgres database
 #https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
