@@ -4,7 +4,7 @@ from django.db import models
 from datetime import datetime, timezone
 import random
 import os
-from django.utils.timezone import now
+from django.utils import timezone
 
 from django.forms import DateField, DateInput
 #Importo o slug random generator para que me meta o título do artigo no slug
