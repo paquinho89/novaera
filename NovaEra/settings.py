@@ -121,7 +121,8 @@ CSRF_COOKIE_SECURE = False
 #      }
 #  }
 
-
+#Vídeo to set up the Railway account with the postgres database
+#https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
