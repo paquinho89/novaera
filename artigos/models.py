@@ -96,7 +96,7 @@ class artigo_comments(models.Model):
         ordering = ['date_added']
 
     def __str__(self):
-        return (self.name)    
+        return (self.nome)    
 
 #Pero eu quero que o unique_slug_generator funcione antes de que o modelo (quero dicir,os datos) son gardados.
 #E dicir, antes de que os datos sexan gardados ten que cubrir o slug no field. Para tal feito o utilizao o código que está a seguir
