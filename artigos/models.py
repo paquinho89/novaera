@@ -57,7 +57,10 @@ class artigos(models.Model):
     #artigos_content = models.TextField()
     artigos_content = RichTextField()
     author = models.ForeignKey(autores, related_name="artigos", on_delete=models.CASCADE, default=1)
-    artigos_date = models.DateTimeField (default=datetime.now, blank=True)
+    #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
+    #de Railway non me acepta o datetime field.
+    artigos_date = models.DateField (default=datetime.now, blank=True, null=True)
+    #artigos_date = models.DateTimeField (default=datetime.now, blank=True)
 
     #Está función e para que me cree a url específica para cada blog.
     def get_absolute_url(self):
@@ -89,6 +92,8 @@ class artigo_comments(models.Model):
     nome = models.CharField(blank=False, max_length=255)
     correo_electrónico = models.EmailField(blank=False, max_length=255, validators=[email_validation])
     comentario = models.TextField(blank=False)
+    #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
+    #de Railway non me acepta o datetime field.
     date_added = models.DateField (default=datetime.now, blank=True, null=True)
     #date_added = models.DateTimeField (default=datetime.now, blank=True)
 

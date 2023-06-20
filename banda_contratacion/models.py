@@ -75,7 +75,10 @@ class contratacion_datos(models.Model):
     teléfono = models.IntegerField(validators=[telephone_number_validation])
     correo_electrónico = models.EmailField(blank=False, max_length=255, validators=[email_validation_contratacion])
     mais_info = models.TextField(blank=True)
-    data_rexistro = models.DateTimeField (default=datetime.now, blank=True)
+    #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
+    #de Railway non me acepta o datetime field.
+    data_rexistro = models.DateField (default=datetime.now, blank=True, null=True)
+    #data_rexistro = models.DateTimeField (default=datetime.now, blank=True)
     contestado = models.BooleanField('contestado', default=False)
     
 

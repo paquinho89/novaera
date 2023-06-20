@@ -16,7 +16,10 @@ class entradas_modelo(models.Model):
     #correo_electrónico_entradas = models.EmailField(primary_key=True, blank=False, max_length=255, error_messages={'unique':"Este correo xa se usuo para facer a reserva"})
     correo_electrónico_entradas = models.EmailField(max_length=255)
     numero_entradas = models.IntegerField(blank=False, null=False, choices=entradas_choices)
-    data_rexistro = models.DateTimeField (default=datetime.now, blank=True)
+    #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
+    #de Railway non me acepta o datetime field.
+    data_rexistro = models.DateField (default=datetime.now, blank=True, null=True)
+    #data_rexistro = models.DateTimeField (default=datetime.now, blank=True)
 
 
 
