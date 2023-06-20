@@ -38,7 +38,7 @@ print ("base dir path", BASE_DIR)
 SECRET_KEY = config('production_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
 #ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com','novaera.herokuapp.com', 'novaera.gal', 'www.novaera.gal']
@@ -268,8 +268,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-
-
 #Fase de desarrollo
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -313,6 +311,3 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # git add . (Para añadir os arquivos a carpeta git init e logo subilos)
 # git commit -m "nome_do_commit"
 # git push origin main
-
-
-#Eliminar
