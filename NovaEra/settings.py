@@ -128,11 +128,11 @@ CSRF_COOKIE_SECURE = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '${{Postgres.PGDATABASE}}',
-        'USER':' ${{Postgres.PGUSER}}', 
-        'PASSWORD': '${{Postgres.PGPASSWORD}}',
-        'HOST': '${{Postgres.PGHOST}}', 
-        'PORT': '${{Postgres.PGPORT}}',
+        'NAME': 'railway',
+        'USER': 'postgres', 
+        'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
+        'HOST': 'containers-us-west-3.railway.app', 
+        'PORT': '8027',
     }
 }
 
