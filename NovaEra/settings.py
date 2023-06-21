@@ -127,12 +127,12 @@ CSRF_COOKIE_SECURE = False
 #https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
 DATABASES = {
     'default': {
-        'ENGINE': config('engine_pg_railway'),
-        'NAME': config('name_pg_raiway'),
-        'USER': config('user_pg_railway'), 
-        'PASSWORD': config('password_pg_railway'),
-        'HOST': config('host_pg_railway'), 
-        'PORT': config('port_pg_railway'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres', 
+        'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
+        'HOST': 'containers-us-west-3.railway.app', 
+        'PORT': '8027',
     }
 }
 
