@@ -128,7 +128,7 @@ CSRF_COOKIE_SECURE = False
 DATABASES = {
     'default': {
         'ENGINE': config('engine_pg_railway'),
-        'NAME': config('name_pg_raiway'),
+        'NAME': config('name_pg_railway'),
         'USER': config('user_pg_railway'), 
         'PASSWORD': config('password_pg_railway'),
         'HOST': config('host_pg_railway'), 
