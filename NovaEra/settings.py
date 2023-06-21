@@ -132,7 +132,7 @@ DATABASES = {
         'USER': config('user_pg_railway'), 
         'PASSWORD': config('password_pg_railway'),
         'HOST': config('host_pg_railway'), 
-        'PORT': '8027',
+        'PORT': config('8027'),
     }
 }
 
