@@ -128,11 +128,11 @@ CSRF_COOKIE_SECURE = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('name_pg_raiway'),
-        'USER': config('user_pg_railway'), 
-        'PASSWORD': config('password_pg_railway'),
-        'HOST': config('host_pg_railway'), 
-        'PORT': config('port_pg_railway'),
+        'NAME': 'railway',
+        'USER': config('PGUSER'), 
+        'PASSWORD': config('PGPASSWORD'),
+        'HOST': config('PGHOST'), 
+        'PORT': config('PGPORT'),
     }
 }
 
