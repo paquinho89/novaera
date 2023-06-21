@@ -127,12 +127,12 @@ CSRF_COOKIE_SECURE = False
 #https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
 DATABASES = {
     'default': {
-        'ENGINE': config('engine_pg_railway'),
-        'NAME': config('name_pg_railway'),
-        'USER': config('user_pg_railway'), 
-        'PASSWORD': config('password_pg_railway'),
-        'HOST': config('host_pg_railway'), 
-        'PORT': config('port_pg_railway'),
+        'ENGINE': os.environ('engine_pg_railway'),
+        'NAME': os.environ('name_pg_railway'),
+        'USER': os.environ('user_pg_railway'), 
+        'PASSWORD': os.environ('password_pg_railway'),
+        'HOST': os.environ('host_pg_railway'), 
+        'PORT': os.environ('port_pg_railway'),
     }
 }
 
