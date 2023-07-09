@@ -56,7 +56,6 @@ def artigos_content_view(request, slug=None, *args, **kwargs):
 
     # if a GET (or any other method) we'll create a blank form
     #EIQUI TES QUE DICIR QUE O FORMULARIO NON É VÁLIDO E NON ESTÁ EN BLANCO.
-    
 
     else:
       messages.error(request, comment_form.errors)
