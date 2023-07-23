@@ -19,6 +19,7 @@ from django.urls import path, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.views.generic import TemplateView
 from NovaEra.views import information_view, obra_social
 from artigos.views import artigos_list_view, artigos_content_view
 from banda_contratacion.views import contratacion_view
@@ -41,7 +42,7 @@ urlpatterns = [
     #re_path('artigos/(?P<id>\d+)/$', artigos_content_view, name='artigos_content'),
     re_path('artigos/(?P<slug>[\w-]+)/$', artigos_content_view, name='artigos_content'),
     path('entradas/', entradas_view, name='reserva_entradas'),
-    path('xornadas_culturais/', entradas_view, name='xornadas_culturais'),
+    path('xornadas_culturais/', TemplateView.as_view(template_name = "templates/xornadas_culturais.html"), name='xornadas_culturais'),
     #Este é a url para renderizar un pdf
     path('pdf/', pdf_view, name='pdf')
 ]
