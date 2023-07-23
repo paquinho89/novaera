@@ -41,6 +41,7 @@ urlpatterns = [
     #re_path('artigos/(?P<id>\d+)/$', artigos_content_view, name='artigos_content'),
     re_path('artigos/(?P<slug>[\w-]+)/$', artigos_content_view, name='artigos_content'),
     path('entradas/', entradas_view, name='reserva_entradas'),
+    path('xornadas_culturais/', entradas_view, name='xornadas_culturais'),
     #Este é a url para renderizar un pdf
     path('pdf/', pdf_view, name='pdf')
 ]

@@ -311,4 +311,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # git add . (Para añadir os arquivos a carpeta git init e logo subilos)
 # git commit -m "nome_do_commit"
 # git push origin main (No caso de que así non che vaia fas "git push origin HEAD:main" ou senon falo cun force "git push -f origin HEAD:main")
+#To stablsih the connection with the git hub report
+# git remote add origin <REMOTE_URL>
 # git remote -v (Para chequear o link do repoistorio a onde lle vas facer push ao proxecto)
