@@ -5,125 +5,138 @@
 
 
 
- <!-- Bootstrap CSS -->
+<!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   
-  <!--Main Navigation-->
-  <header>
+  
     <style>
-      /*Este CSS é para que me poña en vermello as alertas dos forms cando salen mal*/
-      .alert-error {
-        color: #721c24;
-        background-color: #f8d7da;
-        border-color: #f5c6cb;
-        position:absolute;
-        position: sticky;
-        top: 0
-      }
-      #newsletter_message_error {
-        color:red
-      }
-      /* Carousel styling */
-      .carousel-item {
-        height: 100vh;
-        background-image: url('{% static "Home_page_concerto.jpg" %}');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-      }
-      /*Con esto oculta a barra horizontal*/
-      body{
+    /*Con esto oculta a barra horizontal*/
+    body{
+        background:#f8f7f7;
+        padding:10px;
         overflow-x: hidden;
-      }
-
-      /* Height for devices larger than 576px */
-      @media (min-width: 992px) {
-        #introCarousel {
-          margin-top: 0px;
-        }
-      }
-      .navbar .nav-link {
-        color: #fff !important;
-      }
-      /* Esto é para que cambie o color cando se pasa por encima sobre o ratón */
-      .btn-dark:hover {
-        background-color: grey;
+        margin-left: auto;
     }
-    </style>    
+    .timeline {
+        position: relative;
+        padding: 10px 0;
+        list-style: none;
+        max-width:1000px;
+        margin: auto;
+    }
+    
+    .timeline > .timeline-item {
+        position: relative;
+        margin-bottom: 20px;
+    }
+    
+    
+    .timeline > .timeline-item > .timeline-panel {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        border: 1px solid #e9ecef;
+        border-radius: 2px;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+    }
+    
+    .timeline-title {
+        margin-top: 0;
+        color: inherit;
+        font-weight: 400;
+    }
+    .timeline-body > p,
+    .timeline-body > ul {
+        margin-bottom: 0;
+    }
+    .timeline-left:before {
+        left: 30px;
+    }
+    
+</style>
+<!--Main Navigation-->
+<header>
 
-<!doctype html>
-<html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
-<!-- Bootstrap CSS --> <!--Esto é o css qie está cargado en internet. Se te fixas é unha stylesheet onde todos os formatos css-->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<br>
-<br>
-<br>
-<body>
-    <div class="d-flex" id="wrapper">
-        <!-- Sidebar-->
-        <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="list-group-item list-group-item p-3"><strong>Xornadas Culturais</strong></div>
-            <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#Venres">4-Ago-2023</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#Sábado">5-Ago-2023</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#Domingo">6-Ago-2023</a>
-            </div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <ul class="timeline timeline-right">
+            <li class="timeline-item">
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h5 class="timeline-title"><strong>&#128117 Venres, 04-Ago-2023</strong></h5>
+                  <p>
+                    <strong>10:30 - Ludoteca Verín</strong>
+                  </p>
+                  <p>
+                    Os integrantes da Banda de Gaitas Nova Era visitarán ás crianzas da Ludoteca do Concello de Verín cun obradoiro de música tradicional. 
+                    Un achegamento aos sons máis representativos das nosas músicas a través de xogos rítmicos e participativos para despertar o interese da cativada 
+                    pola música de raíz. Un xeito de conectar ás novas xeracións coa música que marcou a vida dos nosos avós
+                  </p>
+                  <p>
+                    <strong>16:30 - Visita aos centros da terceira idade</strong>
+                  </p>
+                    <p>
+                      Na tarde do Venres, tamén estaremos cos nosos maiores no Centro de día Solleira, no Fogar de Santa María e na Residencia Val de Monterrei.
+                    </p>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h5 class="timeline-title"><strong>&#127863 Sábado, 05-Ago-2023</strong></h5>
+                  <p>
+                    <strong> 19:00 - Cantos de Taberna - Praza García Barbón - Verín</strong>
+                  </p>
+                  <p>Un dos pratos fortes desta programación serán os Cantos de Taberna na tarde do Sábado. As diferentes agrupacións de música tradicional da 
+                    contorna están convocadas a percorrer os establecementos colaboradores coas súas mellores cancións para ir reclutando bailadoras para unha 
+                    Gran Foliada Popular na Praza Maior de Verín a partir das 21.00h.</p>
+                  <p>As asociación que encherán a Vila coa nosa música son:</p>
+                      <ul>
+                          <li>Brixel</li>
+                          <li>Candaira</li>
+                          <li>As Rulas</li>
+                          <li>Nova Era</li>
+                      </ul>
+                      <br>
+                  <p>E os establecementos que colaboran co evento son:</p>
+                      <ul>
+                          <li>Casa Nela</li>
+                          <li>Paladar</li>
+                          <li>Bar Praza</li>
+                          <li>Botánico</li>
+                          <li>Vinoteca Gandainas</li>
+                          <li>Bar 20 e 1/2</li>
+                      </ul>
+                </div>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h5 class="timeline-title"><strong>&#127925Domingo, 06-Ago-2023</strong></h5>
+                  <p>
+                    <strong> 20:00 - Concerto de Nova Era - Praza da Mercé - Verín</strong>
+                  </p>
+                  <p>
+                    Como broche final das xornadas, p sábado pola tarde a BG Nova Era ofrecerá un concerto aberto ao público na Praza Maior. Unha actuación que recuperará a esencia do seu xa tradicional Concerto de Nadal. 
+                    Agora, Nova Era aposta por unha posta en escena máis próxima, trasladando a actuación ao centro da vila e achegándose a melodías máis populares. 
+                    Un formato que mergullará ao público en pezas sobradamente coñecidas que non poderán evitar cantar e bailar xunto á banda.
+                  </p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-        <!-- Page content wrapper-->
-        <div id="page-content-wrapper mt-5">
-            <!-- Page content-->
-            <div class="container-fluid">
-                <h2 class="mt-4" id="Venres">&#128117Venres, 04-Agosto-2023&#128113</h2>
-                <br>
-                    <h5><strong>10:30 - Ludoteca Verín</strong></h5>
-                        <p>Os integrantes da Banda de Gaitas Nova Era visitarán ás crianzas da Ludoteca do Concello de Verín cun obradoiro de música tradicional. 
-                            Un achegamento aos sons máis representativos das nosas músicas a través de xogos rítmicos e participativos para despertar o interese da cativada 
-                            pola música de raíz. Un xeito de conectar ás novas xeracións coa música que marcou a vida dos nosos avós </p>
-                    <h5><strong>16:30 - Visita aos centros da terceira idade</strong></h5>
-                        <p>Na tarde do Venres, tamén estaremos botando unhas muiñeiras cos nosos maiores no Centro de día Solleira, no Fogar de Santa María e na Residencia Val de Monterrei.</p>
-                <h2 class="mt-4" id="Sábado">&#127863Sábado, 05-Agosto-2023&#127863</h2>
-                <br>
-                    <h5><strong>19:00 - Cantos de Taberna - Praza García Barbón - Verín</strong></h5>
-                        <p>Un dos pratos fortes desta programación serán os Cantos de Taberna na tarde do Sábado. As diferentes agrupacións de música tradicional da 
-                            contorna están convocadas a percorrer os establecementos colaboradores coas súas mellores cancións para ir reclutando bailadoras para unha 
-                            Gran Foliada Popular na Praza Maior de Verín a partir das 21.00h.</p>
-                        <p>As asociación que encherán a Vila coa nosa música son:</p>
-                            <ul>
-                                <li>Brixel</li>
-                                <li>Candaira</li>
-                                <li>As Rulas</li>
-                                <li>Nova Era</li>
-                            </ul>
-                        <p>E os establecementos que colaboran co evento son:</p>
-                            <ul>
-                                <li>Casa Nela</li>
-                                <li>Paladar</li>
-                                <li>Bar Praza</li>
-                                <li>Botánico</li>
-                                <li>Vinoteca Gandainas</li>
-                                <li>Bar 20 e 1/2</li>
-                            </ul>
-                          
-                <h2 class="mt-4" id="Domingo">&#127925Domingo, 06-Agosto-2023&#127925</h2>
-                <br>
-                <h5><strong>20:00 - Concerto de Nova Era - Praza da Mercé - Verín</strong></h5>
-                    <p>Como broche final das xornadas, o Domingo ás 20:00 da tarde a BG Nova Era ofrecerá un concerto aberto ao público na Praza Maior. Unha actuación que recuperará a esencia do seu xa tradicional Concerto de Nadal. 
-                        Agora, Nova Era aposta por unha posta en escena máis próxima, trasladando a actuación ao centro da vila e achegándose a melodías máis populares. 
-                        Un formato que mergullará ao público en pezas sobradamente coñecidas que non poderán evitar cantar e bailar xunto á banda.</p>
-            </div>
-        </div>
+      </div>
     </div>
-
-<body>
-    <br>
-    <br>
-    <br>
-  
-<!-- Bootstrap core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Core theme JS-->
-<script src="js/scripts.js"></script>
+  </div>
+</div>
 
 <!--Footer-->
 {% include 'base/footer.html' %}
