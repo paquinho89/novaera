@@ -314,3 +314,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 #To stablsih the connection with the git hub report
 # git remote add origin <REMOTE_URL>
 # git remote -v (Para chequear o link do repoistorio a onde lle vas facer push ao proxecto)
+
+# O certificado SSL téñoo con CloudFare:
+# https://dash.cloudflare.com/d178b3414230bc5aa19afedf16304998/novaera.gal
