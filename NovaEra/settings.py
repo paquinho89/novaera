@@ -63,8 +63,8 @@ INSTALLED_APPS = [
     'storages',
     #Para implementar o rich text no cuadro do text field dos artículos
     #https://www.geeksforgeeks.org/richtextfield-django-models/
-    #'ckeditor',
-    #'ckeditor_uploader',
+    'ckeditor',
+    'ckeditor_uploader',
     'entradas',
     #app para renderizar un pdf. Aunque estou vendo e senon inclúes a app eiqui tamén che funciona.
     'render_pdf'

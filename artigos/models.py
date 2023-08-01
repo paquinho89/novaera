@@ -54,8 +54,8 @@ class artigos(models.Model):
     artigos_title = models.CharField(max_length=120)
     slug = models.SlugField(blank=True, unique=True, verbose_name="Deixar_en_blanco")
     artigos_summary = models.TextField()
-    artigos_content = models.TextField()
-    #artigos_content = RichTextField()
+    #artigos_content = models.TextField()
+    artigos_content = RichTextField()
     author = models.ForeignKey(autores, related_name="artigos", on_delete=models.CASCADE, default=1)
     #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
     #de Railway non me acepta o datetime field.
