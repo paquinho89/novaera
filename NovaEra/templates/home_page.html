@@ -58,19 +58,20 @@
           <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
             <div class="d-flex justify-content-center align-items-center h-100">
               <div class="text-white text-center">
-                <ul class="list-unstyled">
-                  <li><h1 class="mb-3">Domingo 6-Ago-2023</h1></li>
-                  <li><h1 class="mb-3">20.00 horas</h1></li>
-                  <li><h1 class="mb-3">Praza García Barbón - Verín</h1></li>
+                <!--<ul class="list-unstyled">-->
+                <ul>
+                  <li><h3 class="mb-3">Castrelo do Val - 12 Agosto 2023</h3></li>
+                  <li><h3 class="mb-3">Castrelo do Val - 15 Agosto 2023</h1></li>
+                  <li><h3 class="mb-3">Xuntanza Internacional de Gaiteiros - Castelo de Monterrei - 26 - Agosto 2023</h3></li>
                 </ul>
-                    <p>Co motivo das Xornadas de Música Tradicional que se levarán a cabo entre o 3 e 6 de Agosto, a BG Nova Era ofrecerá un concerto na <strong>Praza García Barbón - Verín</strong>
-                    </p>
+                    <!--<p>Co motivo das Xornadas de Música Tradicional que se levarán a cabo entre o 3 e 6 de Agosto, a BG Nova Era ofrecerá un concerto na <strong>Praza García Barbón - Verín</strong>
+                    </p>-->
                   <!--<li><strong>15-Agosto-2023</strong> Castrelo do Val</li>
                   <li><strong>26-Agosto-2023</strong> Xuntanza Internacional de Gaiteiros (Castelo de Monterrei)</li>-->
                 <!--<a class="btn btn-outline-light btn-lg m-2" href="#info_section" role="button">Máis Info</a> -->
                 <!-- Esto é para que se abra o link noutra pesataña target="_blank"-->
                 <!-- Para que ao dar click se abra un pdf -->
-                <a class="btn btn-outline-light btn-lg m-2" href="{% url 'xornadas_culturais' %}" role="button">Programación das Xornadas</a>
+                <!--<a class="btn btn-outline-light btn-lg m-2" href="{% url 'xornadas_culturais' %}" role="button">Programación das Xornadas</a>-->
               </div>
             </div>
           </div>
@@ -133,6 +134,9 @@
                 <h5 class="card-title">Rumbo NE</h5>
                 <p class="card-text">
                   Escoita o noso primeiro traballo de Estudo en Spotify
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-spotify" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/>
+                  </svg>
                 </p>
                 <a href="https://open.spotify.com/artist/3fJmPt9egqc2PiHu21Axt9" target='_blank' class="btn btn-dark mt-auto">Escoitao xa!</a>
               </div>
@@ -153,6 +157,24 @@
                   Os nosos directores, Dani e Álvaro, explican as bases musicais nas que se asenta a banda e presentan o primerio traballo de estudo: "Rumbo NE".
                 </p>
                 <a href="https://www.mondosonoro.com/entrevistas/nova-era-se-abre-camino/" target='blank' class="btn btn-dark mt-auto">Ir á entrevista</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 d-flex align-items-stretch col-md-6 mb-4">
+            <div class="card">
+              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                <img src='{% static "Guinnes_image.png" %}' class="img-fluid" />
+                <a href="#!">
+                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                </a>
+              </div>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title mt-auto">Álvaro Rúa acada o World Record Guinnes coa nota máis larga do mundo</h5>
+                <p class="card-text mt-auto">
+                  Un dos nosos directores musicais, Álvaro Rúa, entra no World Record Guinnes despois de dar a nota máis larga do mundo cun instrumento de vento.
+                </p>
+                <a href="https://www.novaera.gal/artigos/a-gaita-galega-entra-no-world-record-guinnes/" class="btn btn-dark mt-auto">Máis Info</a>
               </div>
             </div>
           </div>

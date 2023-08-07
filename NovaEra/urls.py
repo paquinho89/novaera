@@ -42,7 +42,7 @@ urlpatterns = [
     #re_path('artigos/(?P<id>\d+)/$', artigos_content_view, name='artigos_content'),
     re_path('artigos/(?P<slug>[\w-]+)/$', artigos_content_view, name='artigos_content'),
     path('entradas/', entradas_view, name='reserva_entradas'),
-    path('xornadas_culturais/', TemplateView.as_view(template_name = "xornadas_culturais.html"), name='xornadas_culturais'),
+    path('record_guinnes/', TemplateView.as_view(template_name = "record_guinnes.html"), name='record_guinnes'),
     #Este é a url para renderizar un pdf
     path('pdf/', pdf_view, name='pdf')
 ]
