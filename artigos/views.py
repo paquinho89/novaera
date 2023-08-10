@@ -52,8 +52,6 @@ def artigos_content_view(request, slug=None, *args, **kwargs):
       #artigos_content e que para que me retorne a vista do blog
       return redirect('artigos_content', slug=artigo_instance.slug)
     
-    
-
     # if a GET (or any other method) we'll create a blank form
     #EIQUI TES QUE DICIR QUE O FORMULARIO NON É VÁLIDO E NON ESTÁ EN BLANCO.
 
