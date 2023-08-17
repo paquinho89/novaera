@@ -35,7 +35,7 @@ print ("base dir path", BASE_DIR)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # !!!!!!!!!!IMPORTANTE: CAMBIA ESTO É OCULTA A SECRET KEY CANDO SUBAS O CÓDIGO A GITHUB!!!!!!!!!!!!!!!!!!!!!
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in production secret!!
 SECRET_KEY = config('production_secret_key')
 
 
