@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from NovaEra.views import information_view, obra_social
 from artigos.views import artigos_list_view, artigos_content_view
+from faladoiras.views import faladoiras_content_view
 from banda_contratacion.views import contratacion_view
 from newsletter.views import home_page_view
 from entradas.views import entradas_view
@@ -34,6 +35,7 @@ urlpatterns = [
     path('contratación/', contratacion_view, name='contratación'),
     path('informacion/', information_view, name='informacion'),
     path('artigos/', artigos_list_view, name='artigos'),
+    path('faladoiras/', faladoiras_content_view, name='faladoiras'),
     # The P is Python identifier for a named capture group. You will see P in regex used in django
     # ? you want to match either one or zero occurrences of this pattern
     # \d matches any digit

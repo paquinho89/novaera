@@ -34,8 +34,10 @@ print ("base dir path", BASE_DIR)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
+# !!!!!!!!!!IMPORTANTE: CAMBIA ESTO É OCULTA A SECRET KEY CANDO SUBAS O CÓDIGO A GITHUB!!!!!!!!!!!!!!!!!!!!!
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('production_secret_key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -59,6 +61,7 @@ INSTALLED_APPS = [
     'artigos',
     'banda_contratacion',
     'newsletter',
+    'faladoiras',
     #Installing the Amazon Web Service Storage
     'storages',
     #Para implementar o rich text no cuadro do text field dos artículos
@@ -317,3 +320,13 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 # O certificado SSL téñoo con CloudFare:
 # https://dash.cloudflare.com/d178b3414230bc5aa19afedf16304998/novaera.gal
+
+
+#IMPORTANTÍSIMO PARA CORRER O PROXECTO EN LOCAL
+# Creouse unha carpeta settings ('Novaera/settings') con 2 archivos. Un archivo coa configuración para correr o proxecto en producción, e o outro coa configuración para correr o archivo
+# en local. Para correr o archivo en local utilízase este comando:
+# "python manage.py runserver --settings=NovaEra.settings.development"
+# CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" para que funcione en local
+# A anterior info está collida deste víde de youtube:
+# https://www.youtube.com/watch?v=mI114SF2urA
+
