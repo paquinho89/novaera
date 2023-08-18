@@ -323,12 +323,11 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 # https://dash.cloudflare.com/d178b3414230bc5aa19afedf16304998/novaera.gal
 
 
-#IMPORTANTÍSIMO PARA CORRER O PROXECTO EN LOCAL
+#IMPORTANTÍSIMO PARA CORRER O PROXECTO TAMËN EN LOCAL UNHA VEZ QUE ESTÁ SUBIDO A PRODUCCIÓN
 # Creouse unha carpeta settings ('Novaera/settings') con 2 archivos. Un archivo coa configuración para correr o proxecto en producción, e o outro coa configuración para correr o archivo
 # en local. Para correr o archivo en local tes que facer o seguinte:
-#  -    No archivo de manage.py cambias a configuración de "NovaEra.settings" a "NovaEra.settings.settings", pero solo na primeira función:
-#  -    No archivo de views.py do render pdf cambias tamén de "NovaEra.settings" a "NovaEra.settings.settings".
-#  -    Despois corres o seguinte comando "python manage.py runserver --settings=NovaEra.settings.development"
+#  -    Cambieie no archivo de manage.py a configuración de "NovaEra.settings" a "NovaEra.settings.settings", pero solo na primeira función:
+#  -    CORREMOS o seguinte comando "python manage.py runserver --settings=NovaEra.settings.development"
 #  -    CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" ao final para que funcione en local
 # A anterior info está collida deste víde de youtube:
 # https://www.youtube.com/watch?v=mI114SF2urA
