@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import FileResponse
 import os
 
-from NovaEra.settings import BASE_DIR
+from NovaEra.settings.settings import BASE_DIR
 
 # Create your views here.
 

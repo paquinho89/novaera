@@ -36,7 +36,8 @@ print ("base dir path", BASE_DIR)
 
 # !!!!!!!!!!IMPORTANTE: CAMBIA ESTO É OCULTA A SECRET KEY CANDO SUBAS O CÓDIGO A GITHUB!!!!!!!!!!!!!!!!!!!!!
 # SECURITY WARNING: keep the secret key used in production secret!!
-SECRET_KEY = config('production_secret_key')
+#SECRET_KEY = config('production_secret_key')
+SECRET_KEY = 'django-insecure-n^&le##@@+9%tc!s*8rjq4-l_x7yezo1j(745nln0x@%(vv&)!'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -324,9 +325,11 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #IMPORTANTÍSIMO PARA CORRER O PROXECTO EN LOCAL
 # Creouse unha carpeta settings ('Novaera/settings') con 2 archivos. Un archivo coa configuración para correr o proxecto en producción, e o outro coa configuración para correr o archivo
-# en local. Para correr o archivo en local utilízase este comando:
-# "python manage.py runserver --settings=NovaEra.settings.development"
-# CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" para que funcione en local
+# en local. Para correr o archivo en local tes que facer o seguinte:
+#  -    No archivo de manage.py cambias a configuración de "NovaEra.settings" a "NovaEra.settings.settings", pero solo na primeira función:
+#  -    No archivo de views.py do render pdf cambias tamén de "NovaEra.settings" a "NovaEra.settings.settings".
+#  -    Despois corres o seguinte comando "python manage.py runserver --settings=NovaEra.settings.development"
+#  -    CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" ao final para que funcione en local
 # A anterior info está collida deste víde de youtube:
 # https://www.youtube.com/watch?v=mI114SF2urA
 
