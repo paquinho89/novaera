@@ -38,7 +38,7 @@ def upload_image_path(instance, filename):
 class faladoiras(models.Model):
     faladoiras_persoa = models.CharField(max_length=120)
     faladoiras_image_persoa = models.ImageField(upload_to=upload_image_path, null=True, blank = True)
-    youtube_link = models.CharField(max_length=1000, null=False, blank = False, default="Inclúe o iframe do vídeo de youtube")
+    youtube_link = models.CharField(max_length=1000, null=False, blank = False)
     slug = models.SlugField(blank=True, unique=True, verbose_name="Deixar_en_blanco")
     faladoiras_resumen_persoa = models.TextField()
     faladoiras_content = RichTextField()
