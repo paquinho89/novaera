@@ -293,22 +293,19 @@
     <div class="row">
         <div class="col-md-12 mb40">
             <article>
-                <img src="{{ artigo_detail.image.url }}" alt="" class="img-fluid mb30">
+                <iframe class="col-12 mb40" height="500" src="https://www.youtube.com/embed/{{ youtube_link_code_last_characters_html }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="post-content">
-                    <h3>{{ artigo_detail.artigos_title }}</h3>
+                    <h3>{{ faladoiras_detail_html.faladoiras_persoa }}</h3>
                     <ul class="post-meta list-inline">
                         <li class="list-inline-item">
-                            <i class="fa fa-user-circle-o"></i> <a href= "{{ autor.social_media }}" target="_blank" >{{ artigo_detail.author }}</a>
+                            <i class="fa fa-user-circle-o"></i> <a href= "{{ autor.social_media }}" target="_blank" >{{ faladoiras_detail_html.faladoiras_persoa }}</a>
                         </li>
                         <li class="list-inline-item">
-                            <i class="fa fa-calendar-o"></i> <a href="#">{{ artigo_detail.artigos_date }}</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <i class="fa fa-tags"></i> <a href="#">{{ artigo_detail.artigos_title }} </a>
+                            <i class="fa fa-calendar-o"></i> <a href="#">{{ faladoiras_detail_html.faladoiras_date }}</a>
                         </li>
                     </ul>
                     <!-- Eiqui tes que marcar o contido como seguro (safe) para que o rich text do artigos_content se che mostre na páxina-->
-                    <p class="lead">{{ artigo_detail.artigos_content|safe}} </p>
+                    <p class="lead">{{ faladoiras_detail_html.faladoiras_content|safe}} </p>
                     
 
                     <ul class="list-inline share-buttons">
@@ -331,19 +328,11 @@
                             <a href="http://www.linkedin.com/shareArticle?url={{request.get_host}}{{ request.get_full_path }}" target="_blank"> <i class="fa fa-linkedin"></i> </a> 
                         </div>
                     </ul>
-
-                    <hr class="mb40">
-                    <h4 class="mb30 text-uppercase font500">Info sobre o autor</h4>
-                    <div class="media mb40">
-                        <a href="{{ autor.social_media }}" target='blank'><img class="rounded-circle z-depth-1 col-1" alt="100x100" src="{{ autor.image_autor.url }}" data-holder-rendered="true"></a>
-                        <div class="media-body">
-                            <h5 class="mt-2 font700"><a href="{{ autor.social_media }}" target='blank'><strong>{{ autor.name_autor }}</strong></a></h5> {{ autor.description_autor }}
-                        </div>
-                    </div>
-                    <hr class="mb40">
-                    <h4 class="mb40 text-uppercase font500" id="engadir_comentario">Comentarios ({{ number_comments }})</h4>
                     
-                    {% for comment in comments_blog %}
+                    <hr class="mb40">
+                    <h4 class="mb40 text-uppercase font500" id="engadir_comentario">Comentarios ({{ number_comments_html }})</h4>
+                    
+                    {% for comment in comments_blog_html %}
                     <div class="media mb40">
                         <div class="media-body">
                             <h5 class="mt-0 font400 clearfix">
@@ -360,15 +349,15 @@
                             {% csrf_token %}
                             <div class="form-group mt-2">
                                 <label for="exampleInputEmail1">Nome</label>
-                                {{ form.nome }}
+                                {{ form_html.nome }}
                             </div>
                             <div class="form-group mt-2">
                                 <label for="exampleInputPassword1">Correo electrónico</label>
-                                {{ form.correo_electrónico }}
+                                {{ form_html.correo_electrónico }}
                             </div>
                             <div class="form-group mt-2">
                                 <label for="exampleInputPassword1">Comentario</label>
-                                {{ form.comentario }}
+                                {{ form_html.comentario }}
                             </div>
                             <div class="mt-3">
                             <button type="submit" class="btn btn-dark" onclick="location.href='#engadir_comentario'">Engadir comentario</button>

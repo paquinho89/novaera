@@ -324,9 +324,15 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 #IMPORTANTÍSIMO PARA CORRER O PROXECTO EN LOCAL
 # Creouse unha carpeta settings ('Novaera/settings') con 2 archivos. Un archivo coa configuración para correr o proxecto en producción, e o outro coa configuración para correr o archivo
 # en local. Para correr o archivo en local tes que facer o seguinte:
-#  -    Descomenta o código do Secret Key neste archivo (no archivo settings)
+#  -    Descomenta o código do Secret Key neste archivo (no archivo settings). O secret key de django
+#  -    Na carpeta de settings, cambiaslle o nome o archivo de settings para que se chame "settings.py"
+#  -    O archivo de settings.py que está fora desa caperta renoméalo a "settings_stand_by", por exemplo
 #  -    No archivo de manage.py cambias a configuración de "NovaEra.settings" a "NovaEra.settings.settings", pero solo na primeira función:
+#  -    Na app do render_pdf, no archivo de views.py, cambias o import do BASE DIR a "NovaEra.seetings.settings"
 #  -    Despois corres o seguinte comando "python manage.py runserver --settings=NovaEra.settings.development"
 #  -    CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" ao final para que funcione en local
+
+#  -    Para enviar o código a producción tes que desfacer os pasos que fixeches anteriormente.
+
 # A anterior info está collida deste víde de youtube:
 # https://www.youtube.com/watch?v=mI114SF2urA

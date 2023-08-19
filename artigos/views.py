@@ -26,6 +26,7 @@ def artigos_list_view (request):
 def artigos_content_view(request, slug=None, *args, **kwargs):
   #Eiqui estamos collendo o instance slug do modelo (que o slug é o mesmo co título)
   artigo_instance = artigos.objects.get(slug=slug)
+  print('artigo instance', artigo_instance)
   #Eiqui, a través do slug, collemos o pk do queryset, e facemos[0] para coller o primeiro elemento da lista.
   #OLLO. Para levar os elementos do modelo o html, temos que ir solo co nome do autor. Por eso collo o primeiro elemento da lista co [0]
   pk_autor= artigos.objects.filter(slug=slug).values_list('author', flat='True')[0]

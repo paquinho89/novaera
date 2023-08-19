@@ -8,7 +8,7 @@ from django.utils import timezone
 
 from django.forms import DateField, DateInput
 #Importo o slug random generator para que me meta o título do artigo no slug
-from .utils import unique_slug_generator
+from faladoiras.utils import unique_slug_generator
 #Pero eu quero que o unique_slug_generator funcione antes de que o modelo (quero dicir,os datos) son gardados.
 #E dicir, antes de que os datos sexan gardados ten que cubrir o slug
 from django.db.models.signals import pre_save
@@ -38,6 +38,7 @@ def upload_image_path(instance, filename):
 class faladoiras(models.Model):
     faladoiras_persoa = models.CharField(max_length=120)
     faladoiras_image_persoa = models.ImageField(upload_to=upload_image_path, null=True, blank = True)
+    youtube_link = models.CharField(max_length=1000, null=False, blank = False, default="Inclúe o iframe do vídeo de youtube")
     slug = models.SlugField(blank=True, unique=True, verbose_name="Deixar_en_blanco")
     faladoiras_resumen_persoa = models.TextField()
     faladoiras_content = RichTextField()
