@@ -36,15 +36,15 @@ def upload_image_path(instance, filename):
     return "media_files/{new_filename}/{final_filename}".format(new_filename=new_filename, final_filename=final_filename)
 
 class faladoiras(models.Model):
-    faladoiras_persoa = models.CharField(max_length=120)
-    faladoiras_image_persoa = models.ImageField(upload_to=upload_image_path, null=True, blank = True)
+    faladoiras_persoa = models.CharField(max_length=120, verbose_name="Nome da persoa entrevistada")
+    faladoiras_image_persoa = models.ImageField(upload_to=upload_image_path, null=True, blank = True, verbose_name="Foto da persoa entrevistada")
     youtube_link = models.CharField(max_length=1000, null=False, blank = False)
     slug = models.SlugField(blank=True, unique=True, verbose_name="Deixar_en_blanco")
-    faladoiras_resumen_persoa = models.TextField()
-    faladoiras_content = RichTextField()
+    faladoiras_resumen_persoa = models.TextField(null=False, blank = False, verbose_name="Breve resume do entrevistado")
+    faladoiras_content = RichTextField(null=True, blank = True)
     #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
     #de Railway non me acepta o datetime field.
-    faladoiras_date = models.DateField (default=datetime.now, blank=True, null=True)
+    faladoiras_date = models.DateField (default=datetime.now, blank=True, null=True, verbose_name="Data_Non_completar")
     #artigos_date = models.DateTimeField (default=datetime.now, blank=True)
 
     #Está función e para que me cree a url específica para cada entrevista.

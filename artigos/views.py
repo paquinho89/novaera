@@ -65,8 +65,6 @@ def artigos_content_view(request, slug=None, *args, **kwargs):
       for field in comment_form.errors:
         comment_form[field].field.widget.attrs.update({'style': 'border-color:red; border-width: medium'})
 
-      
-
   context = {
     'artigo_detail': artigo_instance,
     'form':comment_form,
