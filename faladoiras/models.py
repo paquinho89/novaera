@@ -47,6 +47,10 @@ class faladoiras(models.Model):
     faladoiras_date = models.DateField (default=datetime.now, blank=True, null=True, verbose_name="Data_Non_completar")
     #artigos_date = models.DateTimeField (default=datetime.now, blank=True)
 
+    #Esto é para que me ordene os vídeos na páxina por data. Os comentarios máis recentes que se posicionen arriba
+    class Meta:
+        ordering = ['-faladoiras_date']
+
     #Está función e para que me cree a url específica para cada entrevista.
     def get_absolute_url(self):
         return "/faladoiras/{slug}/".format(slug=self.slug)    

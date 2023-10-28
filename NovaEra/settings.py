@@ -67,9 +67,7 @@ INSTALLED_APPS = [
     #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
     'ckeditor_uploader',
-    'entradas',
-    #app para renderizar un pdf. Aunque estou vendo e senon inclúes a app eiqui tamén che funciona.
-    'render_pdf'
+    'entradas'
 ]
 
 # ESto é para o cheditor que me estaba dando error
@@ -328,7 +326,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 #  -    Na carpeta de settings, cambiaslle o nome o archivo de settings para que se chame "settings.py"
 #  -    O archivo de settings.py que está fora desa caperta renoméalo a "settings_stand_by", por exemplo
 #  -    No archivo de manage.py cambias a configuración de "NovaEra.settings" a "NovaEra.settings.settings", pero solo na primeira función:
-#  -    Na app do render_pdf, no archivo de views.py, cambias o import do BASE DIR a "NovaEra.seetings.settings"
 #  -    Despois corres o seguinte comando "python manage.py runserver --settings=NovaEra.settings.development"
 #  -    CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" ao final para que funcione en local
 

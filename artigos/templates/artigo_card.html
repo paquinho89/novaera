@@ -12,6 +12,23 @@
 
   gtag('config', 'G-131HD34PD0');
 </script>
+<!--end Google-->
+
+<!--======Style=============-->
+<style>
+  /* Set predefined width for the image */
+.custom-card-image {
+  width: 300px; /* Adjust the width as needed */
+}
+
+/* Adjust image size for smaller screens */
+@media (max-width: 767px) {
+  .custom-card-image {
+    height: 300px;
+  }
+}
+</style>
+<!--======End Style=============-->
 
 
 <!--Main layout-->
@@ -20,7 +37,7 @@
     <main class="my-5">
       <div class="card h-70">
         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-          <a href="{{ instance.get_absolute_url }}"><img src="{{ instance.image.url }}" class="card-img-top" /></a>
+          <a href="{{ instance.get_absolute_url }}"><img src="{{ instance.image.url }}" class="card-img-top custom-card-image" /></a>
             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
           </a>
         </div>

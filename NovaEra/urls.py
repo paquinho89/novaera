@@ -26,7 +26,6 @@ from faladoiras.views import faladoiras_list_view, faladoiras_content_view
 from banda_contratacion.views import contratacion_view
 from newsletter.views import home_page_view
 from entradas.views import entradas_view
-from render_pdf.views import pdf_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -45,9 +44,7 @@ urlpatterns = [
     #re_path('artigos/(?P<id>\d+)/$', artigos_content_view, name='artigos_content'),
     re_path('artigos/(?P<slug>[\w-]+)/$', artigos_content_view, name='artigos_content'),
     path('entradas/', entradas_view, name='reserva_entradas'),
-    path('record_guinnes/', TemplateView.as_view(template_name = "record_guinnes.html"), name='record_guinnes'),
-    #Este é a url para renderizar un pdf
-    path('pdf/', pdf_view, name='pdf')
+    path('record_guinnes/', TemplateView.as_view(template_name = "record_guinnes.html"), name='record_guinnes')
 ]
 #If DEBUG is false, you can't serve locally. If true, it will serve locally.
 #These two lines allow the development server to serve user-uploaded files in the MEDIA_ROOT directory.
