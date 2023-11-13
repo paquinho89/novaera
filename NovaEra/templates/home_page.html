@@ -85,39 +85,73 @@
   <main class="mt-5" id="info_section">
     <br><br><br>
     <div class="container">
-      <!--Section: Content-->
+      <!--Section: Content 1-->
+      <section>
+        <div class="row mb-4">
+          <div class="col-md-6 gx-5">
+            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+              <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/6MQ83iGraqM" title="Reflexos" 
+              frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <a href="#!">-->
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
+                <a href="{% url 'faladoiras' %}">
+                  <img src='{% static "NovaEra_10respostas.jpg" %}' class="img-fluid" />
+                </a>
+                </div>
+              
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-2">
+            <a href="{% url 'faladoiras' %}" style="text-decoration: none; color: black;">
+              <strong><h4 class="text-center mt-4"><strong>"Faladoira"</strong></h4></strong>
+            </a>
+            <p class="text-muted">
+              Nova Era lanza unha nova sección na que os membros de Nova Era contan a súa experiencia e opinión arredor da música tradicional en 10 respostas.
+            </p>
+            <p class="text-muted">
+              Deste xeito, podrás coñecer de primeira mán as persoas que forman esta Banda.
+           </p>
+           <p class="text-muted">
+            <strong>E ti, queres unirte a esta aventura?</strong> Se tocas algún instrumento, non dubides en contactar con nós a través das redes sociais ou no correo: bandadegaitasnovaera@gmail.com
+         </p>
+          </div>
+        </div>
+      </section>
+      <!--Section: Content 1-->
+      <!--Section: Content 2-->
       <section>
         <div class="row">
+          <div class="col-md-6 gx-5 mb-2">
+            <a href="{% url 'faladoiras' %}" style="text-decoration: none; color: black;">
+              <strong><h4 class="text-center"><strong>Rumbo NE</strong></h4></strong>
+            </a>
+            <p class="text-muted">
+              O noso primeiro traballo de estudo é toda unha viaxe arredor do mundo grazas a disparidade de estilos musicais que nos atopamos nas cancións. Tanto é así que podemos escoitar xéneros tan diversos como é a muiñeira galega ou o "swing" americano, pasando pola salsa cubana, a música dos países celtas ou os ritmos balcánicos.
+            </p>
+           <p class="text-muted">
+            Este disco está cheo de sorpresas e conta coa colaboración de artista da talla de Óscar Ibáñez na "Alborada de Verín e Muiñeira de Piadela" ou o coro infantil da "Compañía de la Fundación Mayeusis" que nos pon os pelos de punta coa súa aportación en "Amencer no Val".
+            </p>
+            <p class="text-muted">
+              A edición física de "Rumbo NE" presentase en formato CD, onde se narra a historia dunha viaxe en barco na que a banda sonora son as propias cancións que forman o disco.
+            </p>
+          </div>
           <div class="col-md-6 gx-5 mb-2">
             <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
               <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/6MQ83iGraqM" title="Reflexos" 
               frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
               <a href="#!">-->
                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);">
-                  <img src='{% static "NovaEra_Xornadas.jpg" %}' class="img-fluid" />
+                <a href="{% url 'faladoiras' %}">
+                  <iframe src="https://open.spotify.com/embed/artist/3fJmPt9egqc2PiHu21Axt9?utm_source=generator" width="100%" height="370" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                </a>
                 </div>
-              
-            </div>
-          </div>
-
-          <div class="col-md-6 gx-5 mb-2">
-            <h4 class="text-center"><strong>Damos por rematadas as III Xornadas de Música Tradicional Nova Era</strong></h4>
-            <p class="text-muted">
-              Unhas xornadas onde enchemos as rúas de Verín co noso son e que estiveron cargadiñas de actividades: 
-              <ul>
-                <li class="text-muted"> Un World Record Guinnes á nota máis longa cun instrumento de vento</li>
-                <li class="text-muted"> Xogos orientados á música tradicional para os máis cativos</li>
-                <li class="text-muted"> Visita aos centros de maiores para bailar unha muiñeira con elas e eles</li>
-                <li class="text-muted"> Cantos de Taberna levados a cabo gracias á colaboración de Candaira, Brixel e As Rulas</li>
-                <li class="text-muted"> Concerto de Nova Era</li>
-              </ul>
-              <p class="text-muted">
-                Moitas grazas a toda a xente que fixo esto posible.
-            </p>
+              </div>
+            
           </div>
         </div>
       </section>
-      <!--Section: Content-->
+      <!--Section: Content 2-->
 
       <hr class="my-5" />
 
@@ -126,29 +160,6 @@
         <h4 class="mb-5"><strong>Que estamos a argallar?</strong></h4>
 
         <div class="row">
-          <div class="col-lg-4 d-flex align-items-stretch col-md-12 mb-4">
-            <div class="card">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src='{% static "NovaEra_cd.jpg" %}' class="img-fluid" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Rumbo NE</h5>
-                <p class="card-text">
-                  Escoita o noso primeiro traballo de Estudo en Spotify
-                </p>
-                <a href="https://open.spotify.com/artist/3fJmPt9egqc2PiHu21Axt9" target='_blank' class="btn btn-dark mt-auto">
-                  Escoitao xa!
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-spotify" viewBox="0 0 16 16">
-                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
           <div class="col-lg-4 d-flex align-items-stretch col-md-6 mb-4">
             <div class="card">
               <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
