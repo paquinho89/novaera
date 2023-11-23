@@ -261,7 +261,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #Esto é para referirse os arquivos estáticos da páxina web.
 AWS_LOCATION = 'static'
 STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 
