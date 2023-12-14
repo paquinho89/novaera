@@ -89,7 +89,12 @@ ROOT_URLCONF = 'NovaEra.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'NovaEra/templates',
+                 BASE_DIR / 'artigos/templates',
+                 BASE_DIR / 'banda_contratacion/templates/',
+                 BASE_DIR / 'entradas/templates/',
+                 BASE_DIR / 'faladoiras/templates/',
+                 ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -164,7 +169,7 @@ STATIC_URL = '/static/'
 
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos
 STATICFILES_DIRS=[
-   BASE_DIR / "static/"
+   BASE_DIR / "NovaEra/static/"
 ]
 
 print("ruta do static_dir" ,STATICFILES_DIRS)

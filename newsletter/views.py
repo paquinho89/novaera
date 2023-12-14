@@ -45,3 +45,4 @@ def home_page_view(request):
   }
 
   return render (request, 'home_page.html', context)
+
