@@ -25,7 +25,7 @@ from artigos.views import artigos_list_view, artigos_content_view
 from faladoiras.views import faladoiras_list_view, faladoiras_content_view
 from banda_contratacion.views import contratacion_view
 from newsletter.views import home_page_view
-from entradas.views import entradas_view
+from entradas.views import entradas_view, modificacion_reserva_paxina_view, confirmacion_reserva_paxina, email_modificacion_reserva_view, email_confirmacion_reserva_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -43,8 +43,14 @@ urlpatterns = [
     # $ simboliza o final da cadena. A partir de ahí non admite máis texto
     #re_path('artigos/(?P<id>\d+)/$', artigos_content_view, name='artigos_content'),
     re_path('artigos/(?P<slug>[\w-]+)/$', artigos_content_view, name='artigos_content'),
+    path('record_guinnes/', TemplateView.as_view(template_name = "record_guinnes.html"), name='record_guinnes'),
+    #Entradas
     path('entradas/', entradas_view, name='reserva_entradas'),
-    path('record_guinnes/', TemplateView.as_view(template_name = "record_guinnes.html"), name='record_guinnes')
+    path('email_entrada_reservada/', email_confirmacion_reserva_view, name='confirmacion_reserva_email'),
+    path('confirmacion_reserva/', confirmacion_reserva_paxina, name='confirmacion_reserva'),
+    path('email_entrada_modificada/', email_modificacion_reserva_view, name='modificacion_entrada_email'),
+    path('modificacion_reserva/', modificacion_reserva_paxina_view, name='modificacion_reserva')
+
 ]
 #If DEBUG is false, you can't serve locally. If true, it will serve locally.
 #These two lines allow the development server to serve user-uploaded files in the MEDIA_ROOT directory.
