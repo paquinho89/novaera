@@ -127,7 +127,7 @@ def entradas_view(request, *args, **kwargs):
     else:
       for field, errors in entradas_reserva.errors.items():
         entradas_reserva[field].field.widget.attrs.update({'style': 'border-color:red; border-width: medium'})
-      messages.error(request, entradas_reserva.errors)
+      messages.error(request, 'Bótelle un ollo aos errores e inténteo de novo')
 
   context = {
     'entradas_reserva_form_html': entradas_reserva,
