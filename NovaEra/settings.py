@@ -263,9 +263,17 @@ AWS_LOCATION = 'static'
 STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-
-
 #MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#SMTP Configuration para envío de emails
+# https://www.youtube.com/watch?v=sFPcd6myZrY
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 #Fase de desarrollo
 # Static files (CSS, JavaScript, Images)
