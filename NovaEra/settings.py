@@ -169,15 +169,6 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#Configurarción para poder enviar emails desde local
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-#Para ocultar a dirección de correo e o contrasinal utilicei este video: https://www.youtube.com/watch?v=NRf1LeQju2g
-EMAIL_HOST_USER = config('email')
-EMAIL_HOST_PASSWORD = config('contrasinal_email')
-
 #VÍDEOQ QUE TE TES QUEVER PARA QUE OS ARQUIVOS ESTÁTICOS QUE SUBA A PEÑITA SE GARDEN EN S3 (Amazon web services):
 # https://www.youtube.com/watch?v=inQyZ7zFMHM
 #Configuración do AWS 
