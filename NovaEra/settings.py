@@ -12,19 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from importlib.resources import Resource
 from pathlib import Path
-import os
-import django_heroku
-import psycopg2
-import dj_database_url
-
-
-
 from decouple import config
-
-import banda_contratacion
-
-#UN VÍDEO MUI INTERESANTE PARA FACER O DEPLOY INTO HEROKU
-# https://www.youtube.com/watch?v=5d8AQFF0Ot0&t=555s
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,9 +32,13 @@ DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
 #ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'novaera.up.railway.app', 'novaera.gal', '*.novaera.gal', 'www.novaera.gal']
-ALLOWED_HOSTS = []
-# Application definition
+ALLOWED_HOSTS = ['*']
 
+#Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
+CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera.up.railway.app', 'https://novaera.up.railway.app*']
+CSRF_COOKIE_SECURE = False
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -105,12 +98,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 
-#Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
-CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera.up.railway.app', 'https://novaera.up.railway.app*']
-CSRF_COOKIE_SECURE = False
-
-
-#Data base railway - Postgres
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
@@ -177,9 +164,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AWS_S3_REGION_NAME = 'eu-west-3' #change to your region
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 #--------------------------------------------------------------------------
-AWS_ACCESS_KEY_ID = config('aws_key_id')
-AWS_SECRET_ACCESS_KEY = config('aws_secret_key')
-AWS_STORAGE_BUCKET_NAME = config('aws_bucket_name')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
 #Esto é "AWS_QUERYSTRING_AUTH = False" é IMPORTANTÍSIMO. O checkeditor(rich text) do artigos content
 #que permite introducir o texto con estilo, párrafos e demais cousas non funcion. Eu creo que os arquivos
 #estáticos que están relacionados con este paquete cando están subidos ao S3 (AWS) nn funcionan ben.
@@ -203,8 +190,6 @@ AWS_LOCATION = 'static'
 STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-#MEDIAFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 #SMTP Configuration para envío de emails
 # https://www.youtube.com/watch?v=sFPcd6myZrY
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -214,9 +199,6 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'bandadegaitasnovaera@gmail.com'
 EMAIL_HOST_PASSWORD = 'qceatknnawcsndte'
-
-#Upload static files ato S3 (AWS)
-# https://www.youtube.com/watch?v=nzLMA9WZqMM&t=179s
 
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
 #https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
