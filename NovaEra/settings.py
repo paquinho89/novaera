@@ -111,7 +111,7 @@ DATABASES = {
         'NAME': 'railway',
         'PGUSER': 'postgres', 
         'PGPASSWORD': '115Fcg1G4AD22EFaAdD2fE26FDCCAacb',
-        'PGHOST': 'viaduct.proxy.rlwy.net', 
+        'PGHOST': 'monorail.proxy.rlwy.net', 
         'PGPORT': '13753',
     }
 }
