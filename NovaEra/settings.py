@@ -151,44 +151,38 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+#IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
+#A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
+STATICFILES_DIRS=[
+   BASE_DIR / "NovaEra/static/"
+]
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+#Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #VÍDEOQ QUE TE TES QUEVER PARA QUE OS ARQUIVOS ESTÁTICOS QUE SUBA A PEÑITA SE GARDEN EN S3 (Amazon web services):
 # https://www.youtube.com/watch?v=inQyZ7zFMHM
 #Configuración do AWS 
 
-#IMPORTNATÍSIMO ESTO PARA QUE CHE CARGUE OS ARCHIVOS QUE TES EN AMAZON
-AWS_S3_REGION_NAME = 'eu-west-3' #change to your region
-AWS_S3_SIGNATURE_VERSION = 's3v4'
-#--------------------------------------------------------------------------
+#STATIC FILES
+AWS_LOCATION = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
+STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+#MEDIA FILES
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
-#Esto é "AWS_QUERYSTRING_AUTH = False" é IMPORTANTÍSIMO. O checkeditor(rich text) do artigos content
-#que permite introducir o texto con estilo, párrafos e demais cousas non funcion. Eu creo que os arquivos
-#estáticos que están relacionados con este paquete cando están subidos ao S3 (AWS) nn funcionan ben.
-#Por eso, con esta liña de código as cousas non dan problemas e temos o rich text cando todo está en production
-AWS_QUERYSTRING_AUTH = False
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
-#En AWS (S3) é onde se van a gardar os arquivos que os usuarios da web van a subir
-#ESto é para que as imaxes que a xente sube ao crear un blog se garden na seguinte ruta
-AWS_MEDIA='mediafiles'
-#MEDIA_ROOT = os.path.join(BASE_DIR, "NovaEra/mediafiles/")
-#IMPORTANTE. O MEDIA_URL creo que non che vale para nada. O que define onde se gardan os arquivos que a
-#xente sube e coa función "upload_image_path(instance, filename)" definida en artigos > models.py
-#MEDIA_URL = f'https://bandadegaitas-novaera/{AWS_MEDIA}/'
-#The DEFAULT_FILE_STORAGE setting allows you to set the storage to use by default. This eliminates the need
-#to assign `storages to individual fields, and eliminates the need to create migration files even if the 
-#storage changes. Esto do default_file storage indica onnde se gardan os media files
+
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#Esto é para referirse os arquivos estáticos da páxina web.
-AWS_LOCATION = 'static'
-STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+#--------------------------------------------------------------------------
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP Configuration para envío de emails
 # https://www.youtube.com/watch?v=sFPcd6myZrY
@@ -200,6 +194,7 @@ EMAIL_USE_SSL = False
 EMAIL_HOST_USER = 'bandadegaitasnovaera@gmail.com'
 EMAIL_HOST_PASSWORD = 'qceatknnawcsndte'
 
+#---------------------TEMAS DE GIT HUB--------------------------------
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
 #https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
 
@@ -230,19 +225,3 @@ EMAIL_HOST_PASSWORD = 'qceatknnawcsndte'
 
 # O certificado SSL téñoo con CloudFare:
 # https://dash.cloudflare.com/d178b3414230bc5aa19afedf16304998/novaera.gal
-
-
-#IMPORTANTÍSIMO PARA CORRER O PROXECTO EN LOCAL
-# Creouse unha carpeta settings ('Novaera/settings') con 2 archivos. Un archivo coa configuración para correr o proxecto en producción, e o outro coa configuración para correr o archivo
-# en local. Para correr o archivo en local tes que facer o seguinte:
-#  -    Descomenta o código do Secret Key neste archivo (no archivo settings). O secret key de django
-#  -    Na carpeta de settings, cambiaslle o nome o archivo de settings para que se chame "settings.py"
-#  -    O archivo de settings.py que está fora desa caperta renoméalo a "settings_stand_by", por exemplo
-#  -    No archivo de manage.py cambias a configuración de "NovaEra.settings" a "NovaEra.settings.settings", pero solo na primeira función:
-#  -    Despois corres o seguinte comando "python manage.py runserver --settings=NovaEra.settings.development"
-#  -    CALQUERA COMANDO QUE TEÑA un "manage.py" TEN QUE TER O "--settings=NovaEra.settings.development" ao final para que funcione en local
-
-#  -    Para enviar o código a producción tes que desfacer os pasos que fixeches anteriormente.
-
-# A anterior info está collida deste víde de youtube:
-# https://www.youtube.com/watch?v=mI114SF2urA
