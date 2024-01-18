@@ -13,22 +13,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from importlib.resources import Resource
 from pathlib import Path
 import os
-import django_heroku
-import psycopg2
-import dj_database_url
-
-
 
 from decouple import config
-
-import banda_contratacion
 
 #UN VÍDEO MUI INTERESANTE PARA FACER O DEPLOY INTO HEROKU
 # https://www.youtube.com/watch?v=5d8AQFF0Ot0&t=555s
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print ("base dir path", BASE_DIR)
+print ("A ruta do BaseDir", BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production

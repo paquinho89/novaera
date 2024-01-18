@@ -83,7 +83,12 @@ ROOT_URLCONF = 'NovaEra.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'NovaEra/templates'],
+        'DIRS': [BASE_DIR / 'NovaEra/templates',
+                 BASE_DIR / 'artigos/templates',
+                 BASE_DIR / 'banda_contratacion/templates/',
+                 BASE_DIR / 'entradas/templates/',
+                 BASE_DIR / 'faladoiras/templates/',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -165,8 +170,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #Configuración do AWS 
 
 #STATIC FILES
-AWS_LOCATION = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
-STATIC_URL = f'https://{AWS_LOCATION}/'
+AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIA FILES
