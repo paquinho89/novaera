@@ -135,7 +135,6 @@ DATABASES = {
         'PORT': '8027',
     }
 }
-
 #-------------------end---------database local configuration---------------------
 
 #--------------------------start-------Heroku POSTGRES database configuration------------------
