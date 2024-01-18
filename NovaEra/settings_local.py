@@ -121,8 +121,6 @@ DATABASES = {
 }
 #-------------------end---------database local configuration---------------------
 
-import dj_database_url
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -165,7 +163,8 @@ STATICFILES_DIRS=[
    BASE_DIR / "NovaEra/static/"
 ]
 
-print("ruta do static_dir" ,STATICFILES_DIRS)
+#Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #MEDIA FILES: Estes son arquivos que suben os usuarios da web
 MEDIA_URL = '/media/'

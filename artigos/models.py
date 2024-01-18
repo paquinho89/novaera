@@ -8,7 +8,7 @@ from django.utils import timezone
 
 from django.forms import DateField, DateInput
 #Importo o slug random generator para que me meta o título do artigo no slug
-from .utils import unique_slug_generator
+from .helpers import unique_slug_generator
 #Pero eu quero que o unique_slug_generator funcione antes de que o modelo (quero dicir,os datos) son gardados.
 #E dicir, antes de que os datos sexan gardados ten que cubrir o slug
 from django.db.models.signals import pre_save
