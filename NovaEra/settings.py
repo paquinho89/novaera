@@ -105,6 +105,8 @@ WSGI_APPLICATION = 'NovaEra.wsgi.application'
 
 #Vídeo to set up the Railway account with the postgres database
 #https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
+#IMPORTANTÍSISISMO: É moi importante que lle manteñas o nome as variables tal é como están:
+#('ENGINE', 'NAME', 'USER', 'PASSWORD', 'HOST','PORT' )
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -163,8 +165,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #Configuración do AWS 
 
 #STATIC FILES
-AWS_LOCATION = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
-STATIC_URL = f'https://bandadegaitas-novaera/{AWS_LOCATION}/'
+#AWS_LOCATION = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
+STATIC_URL = f'https://bandadegaitas-novaera/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIA FILES
