@@ -110,9 +110,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'PGUSER': 'postgres', 
-        'PGPASSWORD': '115Fcg1G4AD22EFaAdD2fE26FDCCAacb',
-        'PGHOST': '127.0.0.1', 
-        'PGPORT': '13753',
+        'PGPASSWORD': '5F4gd4C*a1bfDDCe1EcdCce*gFEB3CBG',
+        'PGHOST': 'monorail.proxy.rlwy.net', 
+        'PGPORT': '42019',
     }
 }
 #-------------------end---------database local configuration---------------------
