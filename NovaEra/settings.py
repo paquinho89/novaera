@@ -125,7 +125,7 @@ DATABASES = {
         'PGUSER': 'postgres', 
         'PGPASSWORD': '115Fcg1G4AD22EFaAdD2fE26FDCCAacb',
         'PGHOST': 'viaduct.proxy.rlwy.net', 
-        'PGPORT': 13753,
+        'PGPORT': '13753',
     }
 }
 #-------------------end---------database local configuration---------------------
@@ -221,8 +221,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = 'bandadegaitasnovaera@gmail.com'
+EMAIL_HOST_PASSWORD = 'qceatknnawcsndte'
 
 #Upload static files ato S3 (AWS)
 # https://www.youtube.com/watch?v=nzLMA9WZqMM&t=179s
