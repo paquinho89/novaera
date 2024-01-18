@@ -116,10 +116,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
-        'USER': 'postgres', 
-        'PASSWORD': '115Fcg1G4AD22EFaAdD2fE26FDCCAacb',
-        'HOST': 'viaduct.proxy.rlwy.net', 
-        'PORT': '13753',
+        'USER': config('USER'), 
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'), 
+        'PORT': config('PORT'),
     }
 }
 #-------------------end---------database local configuration---------------------
@@ -196,8 +196,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-EMAIL_HOST_USER = 'bandadegaitasnovaera@gmail.com'
-EMAIL_HOST_PASSWORD = 'qceatknnawcsndte'
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 #---------------------TEMAS DE GIT HUB--------------------------------
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
