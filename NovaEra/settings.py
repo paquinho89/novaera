@@ -35,7 +35,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 #Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
-CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera.up.railway.app', 'https://novaera.up.railway.app*']
+CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera-production.up.railway.app', 'https://novaera-production.up.railway.app*']
 CSRF_COOKIE_SECURE = False
 
 # Application definition
@@ -112,12 +112,10 @@ DATABASES = {
         'PGUSER': 'postgres', 
         'PGPASSWORD': '5F4gd4C*a1bfDDCe1EcdCce*gFEB3CBG',
         'PGHOST': 'monorail.proxy.rlwy.net', 
-        'PGPORT': '42019',
+        'PGPORT': '5432',
     }
 }
 #-------------------end---------database local configuration---------------------
-
-import dj_database_url
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
