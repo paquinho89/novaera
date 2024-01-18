@@ -132,7 +132,7 @@ DATABASES = {
         'USER': 'postgres', 
         'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
         'HOST': 'containers-us-west-3.railway.app', 
-        'PORT': '8027',
+        'PORT': '13753',
     }
 }
 #-------------------end---------database local configuration---------------------
