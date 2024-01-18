@@ -166,7 +166,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #STATIC FILES
 #AWS_LOCATION = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
-STATIC_URL = f'https://bandadegaitas-novaera/static/'
+STATIC_URL = f'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIA FILES
