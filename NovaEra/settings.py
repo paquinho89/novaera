@@ -125,7 +125,7 @@ DATABASES = {
         'PGUSER': 'postgres', 
         'PGPASSWORD': '115Fcg1G4AD22EFaAdD2fE26FDCCAacb',
         'PGHOST': 'viaduct.proxy.rlwy.net', 
-        'PGPORT': '13753',
+        'PGPORT': 13753,
     }
 }
 #-------------------end---------database local configuration---------------------
