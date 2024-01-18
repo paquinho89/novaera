@@ -112,7 +112,7 @@ DATABASES = {
         'PGUSER': 'postgres', 
         'PGPASSWORD': '5F4gd4C*a1bfDDCe1EcdCce*gFEB3CBG',
         'PGHOST': 'monorail.proxy.rlwy.net', 
-        'PGPORT': '5432',
+        'PGPORT': '42019',
     }
 }
 #-------------------end---------database local configuration---------------------
