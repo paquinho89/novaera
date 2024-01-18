@@ -129,10 +129,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
-        'USER': 'postgres', 
-        'PASSWORD': '4VmZCK0FrKGYjcEBe1Lk',
-        'HOST': 'containers-us-west-3.railway.app', 
-        'PORT': '13753',
+        'PGUSER': 'postgres', 
+        'PGPASSWORD': '115Fcg1G4AD22EFaAdD2fE26FDCCAacb',
+        'PGHOST': 'viaduct.proxy.rlwy.net', 
+        'PGPORT': '13753',
     }
 }
 #-------------------end---------database local configuration---------------------
