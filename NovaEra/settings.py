@@ -132,20 +132,9 @@ DATABASES = {
         'USER': config('user_pg_railway'), 
         'PASSWORD': config('password_pg_railway'),
         'HOST': config('host_pg_railway'), 
-        'PORT': config('port_pg_railway'),
+        'PORT': '12533',
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': config('engine_pg_admin'),
-#         'NAME': config ('name_pg_admin'),
-#         'USER': config ('user_pg_admin'), 
-#         'PASSWORD': config ('password_pg_admin'),
-#         'HOST': config ('host_pg_admin'), 
-#         'PORT': config ('port_pg_admin'),
-#     }
-# }
 
 #-------------------end---------database local configuration---------------------
 
