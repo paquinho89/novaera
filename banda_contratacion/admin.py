@@ -3,7 +3,6 @@ from django.contrib import admin
 from banda_contratacion.models import contratacion_datos
 
 # Register your models here.
-#admin.site.register(contratacion_datos)
 
 #Estp é para configurar o panel de administración de django é que aparezan os seguintes campos
 #no panel.

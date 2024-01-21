@@ -81,7 +81,7 @@ def entradas_view(request, *args, **kwargs):
   #Definimos número de entradas reservadas
   entradas_reservadas = sum(lista_numeroentradas)
   #######EIQUI É ONDE TES QUE MODIFICAR O NÚMERO DE ENTRADAS DISPOÑIBLES QUE HAI NO AUDITORIO ##########
-  entradas_disponhibles=200 - entradas_reservadas
+  entradas_disponhibles=3 - entradas_reservadas
 
 #A SEGUINTE SECCIÓN SERÁ MANEXAR OS EMAILS E O FORM E ENVIAR A VISTA DE CONFIRMACION RESERVA OU A DE MODIFICACION RESERVA
   #Esto é para traer todos os emails que foron recollidos e que están na base de datos
@@ -122,6 +122,9 @@ def entradas_view(request, *args, **kwargs):
         #Without the ?, the parameters might not be interpreted correctly as query parameters by the server.
         url = reverse('confirmacion_reserva') + f'?nome_reserva={nome_entradas_form}&numero_entradas={numero_entradas_form}&email={correo_clean}'
         return redirect(url)
+
+    elif entradas_disponhibles == 0:
+      messages.error(request, 'ENTRADAS ESGOTADAS!')
 
     # No caso de que algún dato do formulario non fose correcto, lanzamos unha mensaxe de error
     else:
