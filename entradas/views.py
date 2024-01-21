@@ -81,7 +81,7 @@ def entradas_view(request, *args, **kwargs):
   #Definimos número de entradas reservadas
   entradas_reservadas = sum(lista_numeroentradas)
   #######EIQUI É ONDE TES QUE MODIFICAR O NÚMERO DE ENTRADAS DISPOÑIBLES QUE HAI NO AUDITORIO ##########
-  entradas_disponhibles= 3 - entradas_reservadas
+  entradas_disponhibles= 200 - entradas_reservadas
 
 #A SEGUINTE SECCIÓN SERÁ MANEXAR OS EMAILS E O FORM E ENVIAR A VISTA DE CONFIRMACION RESERVA OU A DE MODIFICACION RESERVA
   #Esto é para traer todos os emails que foron recollidos e que están na base de datos
