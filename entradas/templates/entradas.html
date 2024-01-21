@@ -59,74 +59,83 @@ li{
 }
 </style>
 
-<section class="mt-5">
-  <form method="post" novalidate>
-  {% csrf_token %}
-  <div class="row d-flex justify-content-center d-flex align-items-stretch col-12">
-    <div class="col-lg-6 col-md-6 p-lg-5 order-2 order-md-1">
-      <h3 style="margin: 15px" class="mt-5">Información importante</h3>
-      <ul>
-        <li id="li_informacion" class="mb-4">O abono das entradas realizaráse xusto antes de entrar ao concerto. O custo é de 3€</li>
-        <li id="li_informacion" class="mb-4">Aconséllase estar ao menos 10 minutos antes do comezo do espectáculo</li>
-        <li id="li_informacion" class="mb-4">Unha vez na sala, rógase que se silencien os teléfonos móbiles para evitar distraccións</li>
-        <li id="li_informacion" class="mb-4">Existe un máximo de reserva de 3 entradas por persoa</li>
-        <li id="li_informacion" class="mb-4">Se precisa modificar o número de entradas, volva a cubrir o formulario utilizando o mesmo correo electrónico</li>
-        <li id="li_informacion" class="mb-4" style="color:blue; font-weight: bold">Rógase reservar as entradas que realmente se vaian a utilizar</li>
-        <li id="li_informacion" class="mb-4">No caso de ter algún problema, non dubide en contactar con nós a través do <a style="color: blue;" target="_blank" href="https://www.facebook.com/asocmtm">facebook</a> ou en <a style="color: blue;" target="_blank" href="mailto:bandadegaitasnovaera@gmail.com">bandadegaitasnovaera@gmail.com</a></li>
-      </ul>
-    </div>
-      <div class="col-lg-6 col-md-6 p-lg-5 order-1 order-md-2">
-              <h2 style="margin-left: 10px" class="mt-5">Reserva a túa entrada:</h2>
-              <div class="form-group col-md-6 mb-3" style="margin-left: 10px">
-                <label class="form-control-label">Nome</label> 
-                {{ entradas_reserva_form_html.nome }}
-                {% if messages %}
-                  <label id="label_error" style="color: blue;" class="list-unstyled"><strong>{{ entradas_reserva_form_html.nome.errors }}</strong></label>
-                {% endif %}
-              </div>
-              <div class="form-group col-md-6 mb-3" style="margin-left: 10px">
-                <label class="form-control-label">Apelidos</label> 
-                {{ entradas_reserva_form_html.apelidos }} 
-                {% if messages %}
-                  <label id="label_error" style="color: blue;"><strong>{{ entradas_reserva_form_html.apelidos.errors }}</strong></label>
-                {% endif %}
-              </div>
-              <div class="form-group col-md-6 mb-3" style="margin-left: 10px"> 
-                <label class="form-control-label">Correo electrónico</label> 
-                {{ entradas_reserva_form_html.correo_electrónico_entradas }} 
-                {% if messages %}
-                  <label id="label_error" style="color: blue;"><strong>{{ entradas_reserva_form_html.correo_electrónico_entradas.errors }}</strong></label>
-                {% endif %}
-              </div>
-              <div class="dropdown col-md-6" style="margin-left: 10px">
-                <label class="form-control-label">Escolla o número de entradas</label>
-                {{ entradas_reserva_form_html.numero_entradas }}
-                {% if messages %}
-                  <label id="label_error" style="color: blue;"><strong>{{ entradas_reserva_form_html.numero_entradas.errors }}</strong></label>
-                {% endif %}
-              </div>
-              <button type="submit" class="btn btn-dark col-lg-6 col-md-6  mt-4" style="margin-left: 10px"> Reservar entradas</button>
+{% if entradas_disponhibles_view > 0 %}
+  <section class="mt-5">
+    <form method="post" novalidate>
+    {% csrf_token %}
+      <div class="row d-flex justify-content-center d-flex align-items-stretch col-12">
+        <div class="col-lg-6 col-md-6 p-lg-5 order-2 order-md-1">
+          <h3 style="margin: 15px" class="mt-5">Información importante</h3>
+          <ul>
+            <li id="li_informacion" class="mb-4">O abono das entradas realizaráse xusto antes de entrar ao concerto. O custo é de 3€</li>
+            <li id="li_informacion" class="mb-4">Aconséllase estar ao menos 10 minutos antes do comezo do espectáculo</li>
+            <li id="li_informacion" class="mb-4">Unha vez na sala, rógase que se silencien os teléfonos móbiles para evitar distraccións</li>
+            <li id="li_informacion" class="mb-4">Existe un máximo de reserva de 3 entradas por persoa</li>
+            <li id="li_informacion" class="mb-4">Se precisa modificar o número de entradas, volva a cubrir o formulario utilizando o mesmo correo electrónico</li>
+            <li id="li_informacion" class="mb-4" style="color:blue; font-weight: bold">Rógase reservar as entradas que realmente se vaian a utilizar</li>
+            <li id="li_informacion" class="mb-4">No caso de ter algún problema, non dubide en contactar con nós a través do <a style="color: blue;" target="_blank" href="https://www.facebook.com/asocmtm">facebook</a> ou en <a style="color: blue;" target="_blank" href="mailto:bandadegaitasnovaera@gmail.com">bandadegaitasnovaera@gmail.com</a></li>
+          </ul>
+        </div>
+          <div class="col-lg-6 col-md-6 p-lg-5 order-1 order-md-2">
+                  <h2 style="margin-left: 10px" class="mt-5">Reserva a túa entrada:</h2>
+                  <div class="form-group col-md-6 mb-3" style="margin-left: 10px">
+                    <label class="form-control-label">Nome</label> 
+                    {{ entradas_reserva_form_html.nome }}
+                    {% if messages %}
+                      <label id="label_error" style="color: blue;" class="list-unstyled"><strong>{{ entradas_reserva_form_html.nome.errors }}</strong></label>
+                    {% endif %}
+                  </div>
+                  <div class="form-group col-md-6 mb-3" style="margin-left: 10px">
+                    <label class="form-control-label">Apelidos</label> 
+                    {{ entradas_reserva_form_html.apelidos }} 
+                    {% if messages %}
+                      <label id="label_error" style="color: blue;"><strong>{{ entradas_reserva_form_html.apelidos.errors }}</strong></label>
+                    {% endif %}
+                  </div>
+                  <div class="form-group col-md-6 mb-3" style="margin-left: 10px"> 
+                    <label class="form-control-label">Correo electrónico</label> 
+                    {{ entradas_reserva_form_html.correo_electrónico_entradas }} 
+                    {% if messages %}
+                      <label id="label_error" style="color: blue;"><strong>{{ entradas_reserva_form_html.correo_electrónico_entradas.errors }}</strong></label>
+                    {% endif %}
+                  </div>
+                  <div class="dropdown col-md-6" style="margin-left: 10px">
+                    <label class="form-control-label">Escolla o número de entradas</label>
+                    {{ entradas_reserva_form_html.numero_entradas }}
+                    {% if messages %}
+                      <label id="label_error" style="color: blue;"><strong>{{ entradas_reserva_form_html.numero_entradas.errors }}</strong></label>
+                    {% endif %}
+                  </div>
+                  <button type="submit" class="btn btn-dark col-lg-6 col-md-6  mt-4" style="margin-left: 10px"> Reservar entradas</button>
+          </div>
       </div>
-  </div>
-  </form>
-</section>
+    </form>
+  </section>
 
-<section>
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-3 mb-3">
-      <div class="counter-box" id="box_entradas">
-        <span class="counter">{{entradas_reservadas_view}}</span>
-        <p>Total de entradas reservadas</p>
+  <section>
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-3 mb-3">
+        <div class="counter-box" id="box_entradas">
+          <span class="counter">{{entradas_reservadas_view}}</span>
+          <p>Total de entradas reservadas</p>
+        </div>
+      </div>
+      <div class="col-12 col-md-3 mb-3">
+        <div class="counter-box" id="box_entradas">
+          <span class="counter">{{entradas_disponhibles_view}}</span>
+          <p>Total de entradas dispoñibles</p>
+        </div>
       </div>
     </div>
-    <div class="col-12 col-md-3 mb-3">
-      <div class="counter-box" id="box_entradas">
-        <span class="counter">{{entradas_disponhibles_view}}</span>
-        <p>Total de entradas dispoñibles</p>
-      </div>
+  </section>
+
+{% else %}
+  <div class="row d-flex justify-content-center d-flex align-items-stretch col-12">
+    <div class="col-lg-6 col-md-6 p-lg-5 text-center">
+      <h1 style="margin: 15px; color: red;" class="mt-5"><strong>Entradas esgotadas!!!!!</strong></h1>
     </div>
   </div>
-</section>
+{% endif %}
 
 
 
