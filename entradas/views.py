@@ -82,8 +82,6 @@ def entradas_view(request, *args, **kwargs):
   entradas_reservadas = sum(lista_numeroentradas)
   #######EIQUI É ONDE TES QUE MODIFICAR O NÚMERO DE ENTRADAS DISPOÑIBLES QUE HAI NO AUDITORIO ##########
   entradas_disponhibles= 3 - entradas_reservadas
-  if entradas_disponhibles == 0:
-    messages.error(request, 'ENTRADAS ESGOTADAS!')
 
 #A SEGUINTE SECCIÓN SERÁ MANEXAR OS EMAILS E O FORM E ENVIAR A VISTA DE CONFIRMACION RESERVA OU A DE MODIFICACION RESERVA
   #Esto é para traer todos os emails que foron recollidos e que están na base de datos
@@ -96,40 +94,41 @@ def entradas_view(request, *args, **kwargs):
   
   # if this is a POST request we need to process the form data (Todos os comentarios que nos cheguen serán POST)
   if request.method == 'POST':
-    # check whether it's valid:
-    if entradas_reserva.is_valid():
-    #ESto é para coller o correo que foi intrucido no form
-      correo_clean = entradas_reserva.cleaned_data.get('correo_electrónico_entradas')
-      #ESto é para coller o numero de entradas que foi intrucido no form
-      numero_entradas_form = entradas_reserva.cleaned_data.get('numero_entradas')
-      nome_entradas_form = entradas_reserva.cleaned_data.get('nome')
-      apelidos_entradas_form = entradas_reserva.cleaned_data.get('apelidos')
-      #Vemos se o correo introducido está contido na base de datos.
-      #Se está contido na base de datos actualizamos nome, apelidos e número de entradas
-      if correo_clean in lista_emails:
-        #Actualización do nome, apelidos e número de entradas sempre e cando o correo esté contido na base de datos
-        entradas_modelo.objects.filter(correo_electrónico_entradas=correo_clean).update(numero_entradas=numero_entradas_form, nome=nome_entradas_form, apelidos=apelidos_entradas_form)
-        send_modification_email(request, correo_clean, nome_entradas_form, numero_entradas_form)
-        #reverse pide unha view e devolve a url asociada a esa view IMPORTANTE: the ? character indicates the start of the query parameters
-        #Without the ?, the parameters might not be interpreted correctly as query parameters by the server.
-        url = reverse('modificacion_reserva') + f'?nome_reserva={nome_entradas_form}&numero_entradas={numero_entradas_form}&email={correo_clean}'
-        return redirect(url)
-      else:
-        #No caso de que o correo non esté contido na base de datos creamos un novo rexistro
-        new_entradas_reserva = entradas_reserva.save(commit=False)
-        # Save the comment to the database
-        new_entradas_reserva.save()
-        send_confirm_email(request, correo_clean, nome_entradas_form, numero_entradas_form)
-        #reverse pide unha view e devolve a url asociada a esa view IMPORTANTE: the ? character indicates the start of the query parameters
-        #Without the ?, the parameters might not be interpreted correctly as query parameters by the server.
-        url = reverse('confirmacion_reserva') + f'?nome_reserva={nome_entradas_form}&numero_entradas={numero_entradas_form}&email={correo_clean}'
-        return redirect(url)
+    if entradas_disponhibles == 0:
+      messages.error(request, 'ENTRADAS ESGOTADAS!')
+      if entradas_reserva.is_valid():
+      #ESto é para coller o correo que foi intrucido no form
+        correo_clean = entradas_reserva.cleaned_data.get('correo_electrónico_entradas')
+        #ESto é para coller o numero de entradas que foi intrucido no form
+        numero_entradas_form = entradas_reserva.cleaned_data.get('numero_entradas')
+        nome_entradas_form = entradas_reserva.cleaned_data.get('nome')
+        apelidos_entradas_form = entradas_reserva.cleaned_data.get('apelidos')
+        #Vemos se o correo introducido está contido na base de datos.
+        #Se está contido na base de datos actualizamos nome, apelidos e número de entradas
+        if correo_clean in lista_emails:
+          #Actualización do nome, apelidos e número de entradas sempre e cando o correo esté contido na base de datos
+          entradas_modelo.objects.filter(correo_electrónico_entradas=correo_clean).update(numero_entradas=numero_entradas_form, nome=nome_entradas_form, apelidos=apelidos_entradas_form)
+          send_modification_email(request, correo_clean, nome_entradas_form, numero_entradas_form)
+          #reverse pide unha view e devolve a url asociada a esa view IMPORTANTE: the ? character indicates the start of the query parameters
+          #Without the ?, the parameters might not be interpreted correctly as query parameters by the server.
+          url = reverse('modificacion_reserva') + f'?nome_reserva={nome_entradas_form}&numero_entradas={numero_entradas_form}&email={correo_clean}'
+          return redirect(url)
+        else:
+          #No caso de que o correo non esté contido na base de datos creamos un novo rexistro
+          new_entradas_reserva = entradas_reserva.save(commit=False)
+          # Save the comment to the database
+          new_entradas_reserva.save()
+          send_confirm_email(request, correo_clean, nome_entradas_form, numero_entradas_form)
+          #reverse pide unha view e devolve a url asociada a esa view IMPORTANTE: the ? character indicates the start of the query parameters
+          #Without the ?, the parameters might not be interpreted correctly as query parameters by the server.
+          url = reverse('confirmacion_reserva') + f'?nome_reserva={nome_entradas_form}&numero_entradas={numero_entradas_form}&email={correo_clean}'
+          return redirect(url)
 
-    # No caso de que algún dato do formulario non fose correcto, lanzamos unha mensaxe de error
-    else:
-      for field, errors in entradas_reserva.errors.items():
-        entradas_reserva[field].field.widget.attrs.update({'style': 'border-color:red; border-width: medium'})
-      messages.error(request, 'Bótelle un ollo aos errores e inténteo de novo')
+      # No caso de que algún dato do formulario non fose correcto, lanzamos unha mensaxe de error
+      else:
+        for field, errors in entradas_reserva.errors.items():
+          entradas_reserva[field].field.widget.attrs.update({'style': 'border-color:red; border-width: medium'})
+        messages.error(request, 'Bótelle un ollo aos errores e inténteo de novo')
 
   context = {
     'entradas_reserva_form_html': entradas_reserva,
