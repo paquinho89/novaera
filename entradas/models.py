@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.forms import ModelForm, CharField, TextInput
 
 # Create your models here.
-entradas_choices = [(i,i) for i in range(1,4)]
+entradas_choices = [(i,i) for i in range(1,5)]
 
 # Create your models here.
 class entradas_modelo(models.Model):
