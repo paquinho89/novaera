@@ -59,7 +59,7 @@ def contratacion_view(request):
         "EMAIL: " + contratante_email + "\n" +
         "MAIS_INFO: " + contratante_info, #message
         contratante_email, #from_email
-        ['paquinho89@gmail.com', 'paquinho89@hotmail.com'], #To Email
+        ['paquinho89@gmail.com', 'paquinho89@hotmail.com', 'bandadegaitasnovaera@gmail.com'], #To Email
         fail_silently = True
       )
 
