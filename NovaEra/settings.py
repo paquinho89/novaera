@@ -28,7 +28,7 @@ print ("base dir path", BASE_DIR)
 SECRET_KEY = 'django-insecure-n^&le##@@+9%tc!s*8rjq4-l_x7yezo1j(745nln0x@%(vv&)!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
 #ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'novaera.up.railway.app', 'novaera.gal', '*.novaera.gal', 'www.novaera.gal']
@@ -159,7 +159,7 @@ USE_TZ = True
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
 #A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
 STATICFILES_DIRS=[
-   BASE_DIR / "NovaEra/"
+   BASE_DIR / "NovaEra/static/"
 ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
