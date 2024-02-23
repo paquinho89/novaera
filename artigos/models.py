@@ -60,7 +60,10 @@ class artigos(models.Model):
     #Teño que utilizar DateField e non podo utilizar o DateTimeField porque na base de datos de Postgress
     #de Railway non me acepta o datetime field.
     artigos_date = models.DateField (default=datetime.now, blank=True, null=True)
-    #artigos_date = models.DateTimeField (default=datetime.now, blank=True)
+    
+    #Esto é para que me ordene os artigos por data
+    class Meta:
+        ordering = ['-artigos_date']
 
     #Está función e para que me cree a url específica para cada blog.
     def get_absolute_url(self):
