@@ -159,7 +159,7 @@ USE_TZ = True
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
 #A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
 STATICFILES_DIRS=[
-   BASE_DIR / "NovaEra/static/"
+   BASE_DIR / "NovaEra/"
 ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
@@ -170,7 +170,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #Configuración do AWS 
 
 #STATIC FILES
-AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com'
+AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
