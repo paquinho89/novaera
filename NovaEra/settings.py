@@ -159,7 +159,7 @@ USE_TZ = True
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
 #A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
 STATICFILES_DIRS=[
-   BASE_DIR / "NovaEra/"
+   BASE_DIR / "NovaEra/static/"
 ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
