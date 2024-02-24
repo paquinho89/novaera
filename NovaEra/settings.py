@@ -177,14 +177,12 @@ AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static'
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 
-#STATIC FILES
+#STATIC FILES // Esto non está facendo nada. O que realmente está indicando a rita dos archivos é o AWS_S3_CUSTOM_DOMAIN
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-#STATIC_URL = 'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
-#MEDIA FILES
+#MEDIA FILES // Esto non está facendo nada
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media_files/'
-#MEDIA_URL = 'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #--------------------------------------------------------------------------
 

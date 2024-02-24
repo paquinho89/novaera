@@ -37,13 +37,12 @@
     <main class="my-5">
       <div class="card h-70">
         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+          
           {% if request.get_host == '127.0.0.1:8000' %}
           <!-- Use local URL for the image during local development -->
           <a href="{{ instance.get_absolute_url }}"><img src="{{ instance.image.url }}" class="card-img-top custom-card-image" /></a>
           {% else %}
-            {% for image_name in image_name_list_html %}
               <a href="{{ instance.get_absolute_url }}"><img src="https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/{{image_name}}" class="img-fluid" alt="" id="pictures"></a>
-            {% endfor %}
           {% endif %}
 
             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>

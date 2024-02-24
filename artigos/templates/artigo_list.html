@@ -48,7 +48,9 @@
         <h3 class="mb-3"><strong>Os nosos artigos</strong></h3>
         <div class='row d-flex align-items-stretch'>
         {% for artigo in artigos_autores %}
-          {% include 'artigo_card.html' with instance=artigo %}         
+          {% for image_name in image_name_list_html %}
+            {% include 'artigo_card.html' with instance=artigo %}
+          {% endfor %}         
         {% endfor %}
         </div> 
     </section>
