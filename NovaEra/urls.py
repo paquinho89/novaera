@@ -55,8 +55,7 @@ urlpatterns = [
 #If DEBUG is false, you can't serve locally. If true, it will serve locally.
 #These two lines allow the development server to serve user-uploaded files in the MEDIA_ROOT directory.
 #settings.DEBUG check if we are in debug mode (development_mode) or not (production_mode).
-#Mañá mírate esta páxina
-# https://docs.djangoproject.com/en/1.11/howto/static-files/#serving-files-uploaded-by-a-user-during-development
+
 if settings.DEBUG:
     urlpatterns = list(urlpatterns) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns = list(urlpatterns) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
