@@ -2,7 +2,7 @@ from email.policy import default
 from logging import PlaceHolder
 from django.db import models
 from datetime import datetime, timezone
-import random
+from django.utils.text import slugify
 import os
 from django.utils import timezone
 
@@ -29,11 +29,11 @@ def get_filename_extension (filepath):
     return name, ext
 
 def upload_image_path(instance, filename):
-    #This is given a random number as a name to the picture uploaded for the file
-    new_filename=random.randint(1,999)
     name, ext= get_filename_extension(filename)
-    final_filename='{new_filename}{ext}'.format(new_filename=new_filename, ext=ext)
-    return "static/media_files/{new_filename}/{final_filename}".format(new_filename=new_filename, final_filename=final_filename)
+    # Generate a unique slug to avoid overwriting existing files
+    slug = slugify(name)
+    final_filename='{slug}{ext}'.format(slug=slug, ext=ext)
+    return "media_files/{final_filename}".format(final_filename=final_filename)
 
 
 # Create your models here.
