@@ -13,11 +13,19 @@ def artigos_list_view (request):
   #Vamos a unir as 2 tablas (artigos & autores) para ter todo nunha sola query set e poder recorrela toda desde o html
   #IMPORTANTE: O select_related é como estar facendo un inner join. Estás unindo a tabla de artigos ca de autores pola columna que teñan en común ("author").
   artigos_autores_queryset = artigos.objects.select_related('author').all()
+  artigos_all_content = artigos.objects.all()
+  image_name_list=[]
+  for names_paths in artigos_all_content:
+    image_path = names_paths.image
+    image_name= str(image_path).rsplit("/",1)[-1]
+    image_name_list.append(image_name)
+  print (image_name_list)
   #Esto é para ver como sería a sql query que o select_related('author') está a facer.
   #print(str(artigos_autores_queryset.query))
     
   context = {
       'artigos_autores': artigos_autores_queryset,
+      'image_name_list_html': image_name_list
     }
   return render (request, 'artigo_list.html', context)
    
