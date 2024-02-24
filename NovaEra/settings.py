@@ -169,18 +169,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://www.youtube.com/watch?v=inQyZ7zFMHM
 #Configuración do AWS 
 
-#STATIC FILES
-AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-
-#MEDIA FILES
+# AWS S3 Configuration
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static'
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 
+#STATIC FILES
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+#MEDIA FILES
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #--------------------------------------------------------------------------
 
