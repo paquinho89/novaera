@@ -178,11 +178,11 @@ AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 
 #STATIC FILES
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIA FILES
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media_files'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media_files/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #--------------------------------------------------------------------------
 
