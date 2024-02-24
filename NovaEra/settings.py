@@ -179,12 +179,12 @@ AWS_DEFAULT_ACL = None
 
 #STATIC FILES
 #STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-STATIC_URL = 'https://bandadegaitas-novaera.s3.amazonaws.com/static/'
+STATIC_URL = 'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIA FILES
 #MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media_files/'
-MEDIA_URL = 'https://bandadegaitas-novaera.s3.amazonaws.com/media_files/'
+MEDIA_URL = 'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #--------------------------------------------------------------------------
 
