@@ -159,13 +159,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
 #A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
-STATICFILES_DIRS=[
-   BASE_DIR / "NovaEra/static/"
-]
+# STATICFILES_DIRS=[
+#    BASE_DIR / "NovaEra/static/"
+# ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -184,11 +184,11 @@ AWS_S3_FILE_OVERWRITE = True
 #AWS_DEFAULT_ACL = None
 
 #STATIC FILES // Esto non está facendo nada. O que realmente está indicando a rita dos archivos é o AWS_S3_CUSTOM_DOMAIN
-STATIC_URL = f'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static/'
+STATIC_URL = f'http://bandadegaitas-novaera.s3-website.eu-west-3.amazonaws.com/static/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 #MEDIA FILES // Esto non está facendo nada
-MEDIA_URL = f'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/'
+MEDIA_URL = f'http://bandadegaitas-novaera.s3-website.eu-west-3.amazonaws.com/media_files/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #--------------------------------------------------------------------------
 
