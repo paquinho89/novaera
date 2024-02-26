@@ -159,7 +159,7 @@ USE_TZ = True
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
 #A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
 STATICFILES_DIRS=[
-   BASE_DIR / "NovaEra/static/"
+   BASE_DIR / "NovaEra/"
 ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
@@ -169,18 +169,20 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://www.youtube.com/watch?v=inQyZ7zFMHM
 #Configuración do AWS 
 
-#STATIC FILES
-AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
-
-#MEDIA FILES
+# AWS S3 Configuration
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/static'
 AWS_S3_FILE_OVERWRITE = True
 AWS_DEFAULT_ACL = None
 
+#STATIC FILES // Esto non está facendo nada. O que realmente está indicando a rita dos archivos é o AWS_S3_CUSTOM_DOMAIN
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+#MEDIA FILES // Esto non está facendo nada
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media_files/'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #--------------------------------------------------------------------------
 

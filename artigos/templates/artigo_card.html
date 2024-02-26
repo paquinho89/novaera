@@ -37,14 +37,12 @@
     <main class="my-5">
       <div class="card h-70">
         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-          
           {% if request.get_host == '127.0.0.1:8000' %}
-          <!-- Use local URL for the image during local development -->
-          <a href="{{ instance.get_absolute_url }}"><img src="{{ instance.image.url }}" class="card-img-top custom-card-image" /></a>
+            <!-- Use local URL for the image during local development -->
+            <a href="{{ instance.get_absolute_url }}"><img src="{{ instance.image.url }}" class="card-img-top custom-card-image" /></a>
           {% else %}
-              <a href="{{ instance.get_absolute_url }}"><img src="https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/{{image_name}}" class="img-fluid" alt="" id="pictures"></a>
+            <a href="{{ instance.get_absolute_url }}"><img src="https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/{{image_name}}" class="img-fluid" alt="" id="pictures"></a>
           {% endif %}
-
             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
           </a>
         </div>
@@ -56,7 +54,11 @@
             <div class="ml-auto info">
               <!--IMPORTANTE:  Teño que por o author para chamar os atributos da tabla autores despois de haber feito o joint, O author é a columna que ten
               o Foregn key. É a columna común entre a tabla autores e a tabla artigos-->
-              <a href="{{artigo.author.social_media}}" target='blank'><img class="rounded-circle z-depth-2 col-2" alt="100x100" src="{{artigo.author.image_autor.url}}" data-holder-rendered="true"></a>
+              {% if request.get_host == '127.0.0.1:8000' %}
+                <a href="{{artigo.author.social_media}}" target='blank'><img class="rounded-circle z-depth-2 col-2" alt="100x100" src="{{artigo.author.image_autor.url}}" data-holder-rendered="true"></a>
+              {% else %}
+                <a href="{{artigo.author.social_media}}" target='blank'><img class="rounded-circle z-depth-2 col-2" alt="100x100" src="{{artigo.author.image_autor.url}}" data-holder-rendered="true"></a>
+              {% endif %}
                 <strong><a href="{{artigo.author.social_media}}" target='_blank' class="text-decoration-none" style="color: black">{{ instance.author }}</a></strong>
                 <time>{{ instance.artigos_date|date:"M d, Y" }}</time>
               <!--<p class="meta">
