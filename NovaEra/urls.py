@@ -56,7 +56,6 @@ urlpatterns = [
 #These two lines allow the development server to serve user-uploaded files in the MEDIA_ROOT directory.
 #settings.DEBUG check if we are in debug mode (development_mode) or not (production_mode).
 
-
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
