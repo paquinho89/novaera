@@ -159,13 +159,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-# STATIC_URL = '/static/'
+#STATIC_URL = '/static/'
 
 #IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
 #A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
-# STATICFILES_DIRS=[
-#    BASE_DIR / "NovaEra/static/"
-# ]
+STATICFILES_DIRS=[
+   BASE_DIR / "NovaEra/static/"
+]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
