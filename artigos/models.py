@@ -33,7 +33,7 @@ def upload_image_path(instance, filename):
     # Generate a unique slug to avoid overwriting existing files
     slug = slugify(name)
     final_filename='{slug}{ext}'.format(slug=slug, ext=ext)
-    return "static/media_files/{final_filename}".format(final_filename=final_filename)
+    return "static/static/media_files/{final_filename}".format(final_filename=final_filename)
 
 
 # Create your models here.
