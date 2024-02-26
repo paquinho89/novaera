@@ -163,7 +163,7 @@ USE_TZ = True
 # ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #VÍDEOQ QUE TE TES QUEVER PARA QUE OS ARQUIVOS ESTÁTICOS QUE SUBA A PEÑITA SE GARDEN EN S3 (Amazon web services):
 # https://www.youtube.com/watch?v=inQyZ7zFMHM
@@ -173,18 +173,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.eu-west-3.amazonaws.com/static'
-#AWS_S3_CUSTOM_DOMAIN = 'bandadegaitas-novaera.s3.eu-west-3.amazonaws.com'
-AWS_S3_FILE_OVERWRITE = True
-#AWS_DEFAULT_ACL = None
+AWS_DEFAULT_ACL = 'public-read' 
 
-#STATIC FILES // Esto non está facendo nada. O que realmente está indicando a rita dos archivos é o AWS_S3_CUSTOM_DOMAIN
-STATIC_URL = f'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+# Static files (CSS, JavaScript, images)
+STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-#MEDIA FILES // Esto non está facendo nada
-MEDIA_URL = f'https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/media_files/'
+# Media files (Uploaded files)
+MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 #--------------------------------------------------------------------------
 
 # Default primary key field type
