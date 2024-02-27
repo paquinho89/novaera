@@ -12,32 +12,33 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from importlib.resources import Resource
 from pathlib import Path
-import os
-
 from decouple import config
-
-#UN VÍDEO MUI INTERESANTE PARA FACER O DEPLOY INTO HEROKU
-# https://www.youtube.com/watch?v=5d8AQFF0Ot0&t=555s
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-print ("A ruta do BaseDir", BASE_DIR)
+print ("base dir path", BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+#SECRET_KEY = config('production_secret_key')
 SECRET_KEY = 'django-insecure-n^&le##@@+9%tc!s*8rjq4-l_x7yezo1j(745nln0x@%(vv&)!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 #Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
-ALLOWED_HOSTS = []
-#ALLOWED_HOSTS = ['*']
-# Application definition
+#ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'novaera.up.railway.app', 'novaera.gal', '*.novaera.gal', 'www.novaera.gal']
+ALLOWED_HOSTS = ['*']
 
+#Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
+CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera-production.up.railway.app', 'https://novaera-production.up.railway.app*']
+CSRF_COOKIE_SECURE = False
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -62,7 +63,7 @@ INSTALLED_APPS = [
     'entradas'
 ]
 
-# ESto é para o ckeditor que me estaba dando error
+# ESto é para o cheditor que me estaba dando error
 CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 
 MIDDLEWARE = [
@@ -87,7 +88,7 @@ TEMPLATES = [
                  BASE_DIR / 'banda_contratacion/templates/',
                  BASE_DIR / 'entradas/templates/',
                  BASE_DIR / 'faladoiras/templates/',
-                 ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,21 +103,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'NovaEra.wsgi.application'
 
-#Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
-CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera.up.railway.app', 'https://novaera.up.railway.app*']
-CSRF_COOKIE_SECURE = False
-
-
-#-------------------start---------database local configuration---------------------
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
 # comando: "python manage.py migrate --run-syncdb"
 
+#Vídeo to set up the Railway account with the postgres database
+#https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
+#IMPORTANTÍSISISMO: É moi importante que lle manteñas o nome as variables tal é como están:
+#('ENGINE', 'NAME', 'USER', 'PASSWORD', 'HOST','PORT' )
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': config('USER'), 
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'), 
+        'PORT': config('PORT'),
     }
 }
 #-------------------end---------database local configuration---------------------
@@ -153,27 +156,42 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = '/static/'
-
-#IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos
-STATICFILES_DIRS=[
-   BASE_DIR / "NovaEra/static/"
-]
+#IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
+#A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
+# STATICFILES_DIRS=[
+#    BASE_DIR / "NovaEra/static/"
+# ]
 
 #Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #MEDIA FILES: Estes son arquivos que suben os usuarios da web
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
+
+#VÍDEOQ QUE TE TES QUEVER PARA QUE OS ARQUIVOS ESTÁTICOS QUE SUBA A PEÑITA SE GARDEN EN S3 (Amazon web services):
+# https://www.youtube.com/watch?v=inQyZ7zFMHM
+#Configuración do AWS 
+
+# AWS S3 Configuration
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
+AWS_DEFAULT_ACL = 'public-read' 
+
+# Static files (CSS, JavaScript, images)
+STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media files (Uploaded files)
+MEDIA_URL = 'https://%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#--------------------------------------------------------------------------
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 #SMTP Configuration para envío de emails
 # https://www.youtube.com/watch?v=sFPcd6myZrY
@@ -184,3 +202,35 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+#---------------------TEMAS DE GIT HUB--------------------------------
+#PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
+#https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
+
+#Pasos para facer deploy dende o teu ordenador:
+#Para facer esto tes que instalar o CLI de heroku
+# heroku login
+# git init
+# git add .
+# git commit -m "nome-do-commit"
+# heroku git:remote -a novaera
+# git push heroku main
+
+#Para crear o requirements.txt file necesario para facer o deploy en Heroku:
+#pip freeze > requirements.txt
+
+#Cando fas un cambio no modelo e tes que replicalo na base de datos de Heroku
+
+#Vídeo espectacular que che explica como facer push en GitHub.
+#  https://www.youtube.com/watch?v=qMck70tLDuo
+# git init (Crea a carpeta .git na carpeta)
+# git status (Para ver os arquivos que teñen cambios)
+# git add . (Para añadir os arquivos a carpeta git init e logo subilos)
+# git commit -m "nome_do_commit"
+# git push origin main (No caso de que así non che vaia fas "git push origin HEAD:main" ou senon falo cun force "git push -f origin HEAD:main")
+#To stablsih the connection with the git hub report
+# git remote add origin <REMOTE_URL>
+# git remote -v (Para chequear o link do repoistorio a onde lle vas facer push ao proxecto)
+
+# O certificado SSL téñoo con CloudFare:
+# https://dash.cloudflare.com/d178b3414230bc5aa19afedf16304998/novaera.gal
