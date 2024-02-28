@@ -17,6 +17,7 @@ from django.core.exceptions import ValidationError
 import re
 #PAra o rich text do text field dos artigos no django/admin
 from ckeditor.fields import RichTextField
+from django.utils.text import slugify
 
 #Estas 2 funcions son para cambiarlle o nome e que aparezca guay no model do admin con outro nome
 
@@ -29,11 +30,11 @@ def get_filename_extension (filepath):
     return name, ext
 
 def upload_image_path(instance, filename):
-    #This is given a random number as a name to the picture uploaded for the file
-    new_filename=random.randint(1,999)
     name, ext= get_filename_extension(filename)
-    final_filename='{new_filename}{ext}'.format(new_filename=new_filename, ext=ext)
-    return "static/media_files/{new_filename}/{final_filename}".format(new_filename=new_filename, final_filename=final_filename)
+    # Generate a unique slug to avoid overwriting existing files
+    slug = slugify(name)
+    final_filename='{slug}{ext}'.format(slug=slug, ext=ext)
+    return "static/media_files/{final_filename}".format(final_filename=final_filename)
 
 class faladoiras(models.Model):
     faladoiras_persoa = models.CharField(max_length=120, verbose_name="Nome da persoa entrevistada")
