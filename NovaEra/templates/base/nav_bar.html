@@ -43,9 +43,6 @@
               <a class="nav-link" aria-current="page" href="{% url 'home_page' %}">Inicio<span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'informacion' %}" rel="nofollow">Nós</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{% url 'contratación' %}">Contratación</a>
             </li>
             <li class="nav-item">
@@ -53,7 +50,10 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'faladoiras' %}"><strong>Faladoira</strong></a> 
-            </li> 
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'informacion' %}" rel="nofollow">Historia</a>
+            </li>
             <!--PARA DESACTIVAR A TAB DE RESERVA DE ENTRADAS, DESCOMENTA ESTE CÓDIGOs-->
             <!--<li class="nav-item">
               <a class="nav-link" href="{% url 'reserva_entradas' %}">Reserva Entradas</a>
