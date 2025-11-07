@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.views.generic import TemplateView
-from NovaEra.views import information_view, obra_social
+from NovaEra.views import information_view, obra_social, health
 from artigos.views import artigos_list_view, artigos_content_view
 from faladoiras.views import faladoiras_list_view, faladoiras_content_view
 from banda_contratacion.views import contratacion_view
