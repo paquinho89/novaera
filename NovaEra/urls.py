@@ -29,6 +29,7 @@ from entradas.views import entradas_view, modificacion_reserva_paxina_view, conf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("health/", views.health, name="health"),
     path('', home_page_view, name='home_page'),
     path('obra_social/', obra_social, name='obra_social'),
     path('contratación/', contratacion_view, name='contratación'),
