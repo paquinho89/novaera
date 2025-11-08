@@ -24,4 +24,26 @@ class newsletter_email(models.Model):
     email_subscriptor = models.EmailField(blank=False, max_length=255, validators=[email_validation_black_list])
 
     def __str__(self):
-        return (self.email_subscriptor)  
+        return (self.email_subscriptor) 
+
+###########################################################
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib import admin
+
+#I create an admin action to send emails to the subscribers whenever I want
+def send_newsletter (modeladmin, request, queryset):
+    emails = list(queryset.values_list('email_subscriptor', flat=True))
+    print(emails)
+    send_mail(
+        subject="Proba",
+        message= "Concerto dos 10 anos",
+        from_email=settings. DEFAULT_FROM_EMAIL,
+        recipient_list=emails,
+        fail_silently=False,
+    )
+    modeladmin.message_user(request, f"Newsletter sent to {len(emails)} recipients.")
+
+class newsletteradmin (admin.ModelAdmin):
+    list_display = ['email_subscriptor']
+    actions = [send_newsletter] 

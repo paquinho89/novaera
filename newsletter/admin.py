@@ -1,6 +1,9 @@
 from django.contrib import admin
 
-from newsletter.models import newsletter_email
+from newsletter.models import newsletter_email, newsletteradmin
+
 
 # Register your models here.
-admin.site.register(newsletter_email)
+admin.site.register(newsletter_email, newsletteradmin)
+
+
