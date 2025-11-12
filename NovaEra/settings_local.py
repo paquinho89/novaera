@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
     'ckeditor_uploader',
-    'entradas'
+    'entradas',
 ]
 
 # ESto é para o ckeditor que me estaba dando error
@@ -87,6 +87,7 @@ TEMPLATES = [
                  BASE_DIR / 'banda_contratacion/templates/',
                  BASE_DIR / 'entradas/templates/',
                  BASE_DIR / 'faladoiras/templates/',
+                 BASE_DIR / 'newsletter/templates/',
                  ],
         'APP_DIRS': True,
         'OPTIONS': {
