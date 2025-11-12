@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
     'ckeditor_uploader',
-    'entradas'
+    'entradas',
 ]
 
 # ESto é para o cheditor que me estaba dando error
