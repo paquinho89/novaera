@@ -1,0 +1,32 @@
+
+Cando queremos migrar na base de datos de raiwlay, os cambios nos modelos (tablas) que fixemos en local vamos a ter o seguinte problema:
+python manage.py migrate
+
+Non se van a recoñecer as nosas credenciales porque raiway non pode leer as credenciales que están escristas desta maneira no .env file 
+PORT=${{shared.PORT}}           
+USER=${{shared.USER}} 
+Enton temos que por os valores reais (hard coding que se dice en ingles)
+
+unha vez modificado o .env file xa podes facer o 
+python manage.py migrate
+
+¿Qué pasa se andiveches enredando en local cos modelos pero despois decides que non queres aplicalos en producción?
+Pois cando vaiamos a facer push, railway vai detectar os archivos de migrations nas distintas apps e vainos a dicir que temos que facer as migracions.
+
+Pero nos como non queresmo facer esas migraciones vamolas a facer, pero faclemolas falsas. Engañamos a railway dicindo que as facemos pero en realidad non as facemos
+Temos que por o seguinte código para todas as apps que teñan modelos. Simplemente temos que ir a carpeta e ver cal é o último arquivo de migracions e por o seu numero.
+
+python manage.py migrate banda_contratacion 0001 --fake
+python manage.py migrate newsletter 0001 --fake
+(...)
+
+Unha vez que o fixemos para todas as apps xa podemos facer o 
+python manage.py migrations
+
+e despois os push (acórdate antes de facer o push, volver a cambiar o .env file para que non se vexan as credenciales. Cando está subido railway pode leer as credenciales deste xeito: USER=${{shared.USER}}
+pero cando está en local non, temos que polas tal cual (hard coding))
+git add .
+git commit -m "proba"
+git push origin main
+
+
