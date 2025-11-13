@@ -32,6 +32,7 @@ def send_newsletter (modeladmin, request, queryset):
         subject=subject,
         body=text_content,
         from_email=from_email,
+        to=["paquinho89@gmail.com"],
         bcc=emails  # use BCC so recipients don't see each other
     )
     msg.attach_alternative(html_content, "text/html")

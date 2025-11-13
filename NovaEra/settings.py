@@ -204,13 +204,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.mailgun.org'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config('MAILGUN_SMTP_LOGIN')
-EMAIL_HOST_PASSWORD = config('MAILGUN_SMTP_PASSWORD')
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.mailgun.org'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = config('MAILGUN_SMTP_LOGIN')
+# EMAIL_HOST_PASSWORD = config('MAILGUN_SMTP_PASSWORD')
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
+
+ANYMAIL = {
+    "SENDGRID_API_KEY": config("SENDGRID_API_KEY"),
+}
+
+DEFAULT_FROM_EMAIL = "bandadegaitasnovaera@gmail.com"
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
 
 #---------------------TEMAS DE GIT HUB------------------------
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
