@@ -205,8 +205,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('MAILGUN_SMTP_SERVER', default='smtp.mailgun.org')
-EMAIL_PORT = config('MAILGUN_SMTP_PORT', cast=int, default=587)
+EMAIL_HOST = 'smtp.mailgun.org'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('MAILGUN_SMTP_LOGIN')
 EMAIL_HOST_PASSWORD = config('MAILGUN_SMTP_PASSWORD')
