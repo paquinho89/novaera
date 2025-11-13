@@ -195,13 +195,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #SMTP Configuration para envío de emails
 # https://www.youtube.com/watch?v=sFPcd6myZrY
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = False
+#EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = config('MAILGUN_SMTP_SERVER', default='smtp.mailgun.org')
+EMAIL_PORT = config('MAILGUN_SMTP_PORT', cast=int, default=587)
 EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = config('MAILGUN_SMTP_LOGIN')
+EMAIL_HOST_PASSWORD = config('MAILGUN_SMTP_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 #---------------------TEMAS DE GIT HUB-------------------------
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
