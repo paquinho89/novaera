@@ -207,7 +207,7 @@ EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
 ANYMAIL = {
     "SENDGRID_API_KEY": config("SENDGRID_API_KEY"),
 }
-DEFAULT_FROM_EMAIL = "bandadegaitasnovaera@gmail.com"
+DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
 
