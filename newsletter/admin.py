@@ -28,14 +28,15 @@ def send_newsletter (modeladmin, request, queryset):
     )
 
     # Create the email with both text and HTML alternatives
-    msg = EmailMultiAlternatives(
-        subject=subject,
-        body=text_content,
-        from_email=from_email,
-        to=["paquinho89@gmail.com"],
-        bcc=emails  # use BCC so recipients don't see each other
-    )
+    for email in emails:
+        msg = EmailMultiAlternatives(
+            subject=subject,
+            body=text_content,
+            from_email=from_email,
+            to=[email],   # aquí vai o destinatario real
+        )
     msg.attach_alternative(html_content, "text/html")
+
 
     # Attach the banner image inline
     banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_newsletter_attached.png")
