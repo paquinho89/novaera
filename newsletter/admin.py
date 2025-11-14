@@ -35,27 +35,26 @@ def send_newsletter (modeladmin, request, queryset):
             from_email=from_email,
             to=[email],   # aquí vai o destinatario real
         )
-    msg.attach_alternative(html_content, "text/html")
+        msg.attach_alternative(html_content, "text/html")
+        
+        # Attach the banner image inline
+        banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_newsletter_attached.png")
+        with open(banner_path, "rb") as f:
+            msg_image = f.read()
+        msg.attach("NovaEra_cartel.png", msg_image, "image/png")
+        # Tell Django this is a multipart/related message (so inline images work)
+        msg.mixed_subtype = 'related'
 
+        # Attach the banner image inline
+        banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_logo.jpg")
+        with open(banner_path, "rb") as f:
+            msg_image = f.read()
+        msg.attach("NovaEra_logo.png", msg_image, "image/png")
+        # Tell Django this is a multipart/related message (so inline images work)
+        msg.mixed_subtype = 'related'
 
-    # Attach the banner image inline
-    banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_newsletter_attached.png")
-    with open(banner_path, "rb") as f:
-        msg_image = f.read()
-    msg.attach("NovaEra_cartel.png", msg_image, "image/png")
-    # Tell Django this is a multipart/related message (so inline images work)
-    msg.mixed_subtype = 'related'
-
-    # Attach the banner image inline
-    banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_logo.jpg")
-    with open(banner_path, "rb") as f:
-        msg_image = f.read()
-    msg.attach("NovaEra_logo.png", msg_image, "image/png")
-    # Tell Django this is a multipart/related message (so inline images work)
-    msg.mixed_subtype = 'related'
-
-    # Send email
-    msg.send(fail_silently=False)
+        # Send email
+        msg.send(fail_silently=False)
 
     # ESta é a mensaxe que sale no administrador cando se envían as mensaxes
     modeladmin.message_user(request, f"Newsletter sent to {len(emails)} recipients.")
