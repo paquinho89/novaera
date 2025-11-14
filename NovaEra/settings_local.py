@@ -187,11 +187,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
-
 ANYMAIL = {
     "SENDGRID_API_KEY": config("SENDGRID_API_KEY"),
 }
-
 DEFAULT_FROM_EMAIL = "bandadegaitasnovaera@gmail.com"
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False
 
