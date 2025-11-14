@@ -36,19 +36,6 @@ def send_newsletter(modeladmin, request, queryset):
 
         msg.attach_alternative(html_content, "text/html")
 
-        # Necesario para permitir inline (multipart/related)
-        msg.mixed_subtype = 'related'
-
-        # CARTEL
-        cartel_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_cartel.jpeg")
-        with open(cartel_path, "rb") as f:
-            msg.attach("dez_cartel.jpeg", f.read(), "image/jpeg")
-
-        # LOGO
-        logo_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_logo.jpg")
-        with open(logo_path, "rb") as f:
-            msg.attach("NovaEra_logo.jpg", f.read(), "image/jpeg")
-
         # Enviar o correo individual
         msg.send(fail_silently=False)
 
