@@ -36,14 +36,12 @@ def send_newsletter (modeladmin, request, queryset):
             to=[email],   # aquí vai o destinatario real
         )
         msg.attach_alternative(html_content, "text/html")
-        
+
         # Attach the banner image inline
-        banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_newsletter_attached.png")
+        banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_cartel.jpeg")
         with open(banner_path, "rb") as f:
             msg_image = f.read()
-        msg.attach("NovaEra_cartel.png", msg_image, "image/png")
-        # Tell Django this is a multipart/related message (so inline images work)
-        msg.mixed_subtype = 'related'
+        msg.attach("dez_cartel.png", msg_image, "image/png")
 
         # Attach the banner image inline
         banner_path = os.path.join(settings.BASE_DIR, "NovaEra", "static", "dez_logo.jpg")
