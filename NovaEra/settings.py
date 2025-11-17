@@ -203,12 +203,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 #EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
-ANYMAIL = {
-    "SENDGRID_API_KEY": config("SENDGRID_API_KEY"),
-}
+# EMAIL_BACKEND = "anymail.backends.sendgrid.EmailBackend"
+# ANYMAIL = {
+#     "SENDGRID_API_KEY": config("SENDGRID_API_KEY"),
+# }
+# DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
+# SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "email-smtp.eu-west-3.amazonaws.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER_SMTP = os.environ.get("EMAIL_HOST_USER_SMTP")
+EMAIL_HOST_PASSWORD_SMTP = os.environ.get("EMAIL_HOST_PASSWORD_SMTP")
+
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
-SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+
 
 
 #---------------------TEMAS DE GIT HUB------------------------
