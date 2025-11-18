@@ -199,8 +199,8 @@ EMAIL_HOST = "email-smtp.eu-west-3.amazonaws.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER_SMTP = os.environ.get("EMAIL_HOST_USER_SMTP")
-EMAIL_HOST_PASSWORD_SMTP = os.environ.get("EMAIL_HOST_PASSWORD_SMTP")
+EMAIL_HOST_USER = 
+EMAIL_HOST_PASSWORD = 
 
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 
