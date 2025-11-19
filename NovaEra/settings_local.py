@@ -191,8 +191,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.eu.mailgun.org"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')       # SMTP login from Mailgun dashboard
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')      # SMTP password from Mailgun
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')       # SMTP login from Mailgun dashboard
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')      # SMTP password from Mailgun
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 
 
