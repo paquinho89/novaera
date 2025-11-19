@@ -1,21 +1,11 @@
 [phases.setup]
-nixPkgs = [
-  "python311",
-  "postgresql",
-  "gcc",
-  "pkg-config"
-]
+nixPkgs = ["python311", "python311Packages.pip", "openssl", "postgresql_16"]
 
 [phases.install]
-cmds = [
-  "pip install --upgrade pip",
-  "pip install -r requirements.txt"
-]
+cmd = "pip install -r requirements.txt"
 
 [phases.build]
-cmds = [
-  "python manage.py collectstatic --noinput"
-]
+cmd = "python manage.py collectstatic --noinput"
 
-[start]
-cmd = "gunicorn novaera.wsgi:application --bind 0.0.0.0:${PORT}"
+[phases.start]
+cmd = "gunicorn novaera.wsgi:application --bind 0.0.0.0:${PORT} --workers=3"
