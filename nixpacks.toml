@@ -1,15 +1,23 @@
+# nixpacks.toml for novaera Django project
+
 [phases.setup]
-# Install required packages for Django + PostgreSQL
-nixPkgs = ["openssl", "postgresql_16", "gcc", "python39", "python310Packages.pip"]
+# Packages needed to build and run Django
+nixPkgs = [
+  "openssl",
+  "postgresql_16",
+  "gcc",
+  "python39",
+  "python310Packages.pip"
+]
 
 [phases.build]
-# Install Python dependencies, run migrations, collect static files
+# Install dependencies, apply migrations, and collect static files
 cmd = "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
 
 [phases.start]
-# Start Django with Gunicorn
+# Start your Django app using Gunicorn
 cmd = "gunicorn novaera.wsgi:application --workers=3 --threads=2 --bind 0.0.0.0:${PORT} --log-level=debug"
 
 [checks]
-# Healthcheck endpoint (adjust if your app uses another path)
+# Simple healthcheck endpoint (adjust if you have a different URL)
 healthcheck = "/health/"
