@@ -14,5 +14,5 @@ class form_newsletter_unsubscribe(forms.ModelForm):
         model = newsletter_email
         fields = [ 'email_subscriptor' ]
         widgets = {
-            'email_subscriptor': forms.EmailInput (attrs = {'class': 'form-control', 'placeholder':'email'})
+            'email_subscriptor': forms.EmailInput (attrs = {'class': 'form-control', 'placeholder':'Introduza o seu email'})
         }
