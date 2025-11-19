@@ -1,11 +1,21 @@
 [phases.setup]
-nixPkgs = ["openssl", "postgresql_16", "gcc", "python39", "python310Packages.pip"]
+nixPkgs = [
+  "openssl",
+  "postgresql_16",
+  "gcc",
+  "python310",
+  "python310Packages.pip"
+]
 
 [phases.build]
-cmd = "pip install -r requirements.txt && python manage.py migrate && python manage.py collectstatic --noinput"
+cmds = [
+  "pip install --upgrade pip",
+  "pip install -r requirements.txt",
+  "python manage.py collectstatic --noinput"
+]
 
 [phases.start]
-cmd = "gunicorn myproject.wsgi:application --workers=3 --threads=2 --bind 0.0.0.0:${PORT} --log-level=debug"
+cmd = "python manage.py migrate && gunicorn myproject.wsgi:application --workers=3 --threads=2 --bind 0.0.0.0:${PORT}"
 
 [checks]
 healthcheck = "/health/"
