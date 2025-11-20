@@ -28,7 +28,7 @@ print ("A ruta do BaseDir", BASE_DIR)
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n^&le##@@+9%tc!s*8rjq4-l_x7yezo1j(745nln0x@%(vv&)!'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
