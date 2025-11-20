@@ -1,0 +1,16 @@
+# nixpacks.toml
+[phases.setup]
+# Include python 3.11, pip, and postgres client libraries
+nixPkgs = ["python311", "python311Packages.pip", "openssl", "postgresql_16"]
+
+[phases.install]
+# Install requirements from your requirements.txt
+cmd = "pip install --no-cache-dir -r requirements.txt"
+
+[phases.build]
+# Collect static files
+cmd = "python manage.py collectstatic --noinput"
+
+[phases.start]
+# Start your Django application
+cmd = "gunicorn NovaEra.wsgi:application --bind 0.0.0.0:${PORT} --workers=3"
