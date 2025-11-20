@@ -10,27 +10,30 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+from importlib.resources import Resource
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# Now loaded from environment variable
-SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback_dev_key_only')
+#SECRET_KEY = config('production_secret_key')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = True
 
-# Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
+#Eiqui a parte de ter o meu host local (127.0.0.1) engado tamén o host de heroku
 ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'novaera.up.railway.app', 'novaera.gal', '*.novaera.gal', 'www.novaera.gal']
 #ALLOWED_HOSTS = ['*']
 
-# Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
+#Esto é para que non me de error a hora de completar os formularios no móbil nin en ningún outro dispositivo
 CSRF_TRUSTED_ORIGINS = ['https://novaera.gal', 'https://*.novaera.gal', 'https://novaera-production.up.railway.app', 'https://novaera-production.up.railway.app*']
 CSRF_COOKIE_SECURE = False
 
@@ -42,18 +45,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Esto é para implementar os botóns de share no blog
+    #Esto é para implementar os botóns de share no blog
     'django_social_share',
     'widget_tweaks',
-    # my apps
+    #my apps
     'artigos',
     'banda_contratacion',
     'newsletter',
     'faladoiras',
-    # Installing the Amazon Web Service Storage
+    #Installing the Amazon Web Service Storage
     'storages',
-    # Para implementar o rich text no cuadro do text field dos artículos
-    # https://www.geeksforgeeks.org/richtextfield-django-models/
+    #Para implementar o rich text no cuadro do text field dos artículos
+    #https://www.geeksforgeeks.org/richtextfield-django-models/
     'ckeditor',
     'ckeditor_uploader',
     'entradas',
@@ -71,7 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Incluir eiqui o whitenoise para os archivos estáticos unha vez que estos se suban a heroku
+    #Incluir eiqui o whitenoise para os archivos estáticos unha vez que estos se suban a heroku
     'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
@@ -80,12 +83,11 @@ ROOT_URLCONF = 'NovaEra.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            BASE_DIR / 'NovaEra/templates',
-            BASE_DIR / 'artigos/templates',
-            BASE_DIR / 'banda_contratacion/templates/',
-            BASE_DIR / 'entradas/templates/',
-            BASE_DIR / 'faladoiras/templates/',
+        'DIRS': [BASE_DIR / 'NovaEra/templates',
+                 BASE_DIR / 'artigos/templates',
+                 BASE_DIR / 'banda_contratacion/templates/',
+                 BASE_DIR / 'entradas/templates/',
+                 BASE_DIR / 'faladoiras/templates/',
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -106,54 +108,71 @@ WSGI_APPLICATION = 'NovaEra.wsgi.application'
 # No caso de que as tablas non se che creen cando fas makemigrations e migrate utiliza este
 # comando: "python manage.py migrate --run-syncdb"
 
-# Vídeo to set up the Railway account with the postgres database
-# https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
-# IMPORTANTÍSISISMO: É moi importante que lle manteñas o nome as variables tal é como están:
-# ('ENGINE', 'NAME', 'USER', 'PASSWORD', 'HOST','PORT' )
+#Vídeo to set up the Railway account with the postgres database
+#https://www.youtube.com/watch?v=HEV1PWycOuQ&t=62s
+#IMPORTANTÍSISISMO: É moi importante que lle manteñas o nome as variables tal é como están:
+#('ENGINE', 'NAME', 'USER', 'PASSWORD', 'HOST','PORT' )
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'), 
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'), 
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': 'railway',
+        'USER': config('USER'), 
+        'PASSWORD': config('PASSWORD'),
+        'HOST': config('HOST'), 
+        'PORT': config('PORT'),
     }
 }
 #-------------------end---------database local configuration---------------------
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
+
 LANGUAGE_CODE = 'gl-ES'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_L10N = True
+
 USE_TZ = True
 
-# IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
-# A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
+#IMPORTANTE: o STATICFILES_DIRS é para indicar onde metes os arquivos estáticos. Ollo, non ten nada que ver con templates
+#A ruta aos templates indícase arriba no "TEMPLATES" para que vaia a buscar os templates.
 # STATICFILES_DIRS=[
 #    BASE_DIR / "NovaEra/static/"
 # ]
 
-# Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#Esto é para asignarlle un sitio a carpeta que se crea cando se fai o "python manage.py collectstatic"
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# MEDIA FILES: Estes son arquivos que suben os usuarios da web
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
+#MEDIA FILES: Estes son arquivos que suben os usuarios da web
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media_files')
 
-# VÍDEOQ QUE TE TES QUEVER PARA QUE OS ARQUIVOS ESTÁTICOS QUE SUBA A PEÑITA SE GARDEN EN S3 (Amazon web services):
+#VÍDEOQ QUE TE TES QUEVER PARA QUE OS ARQUIVOS ESTÁTICOS QUE SUBA A PEÑITA SE GARDEN EN S3 (Amazon web services):
 # https://www.youtube.com/watch?v=inQyZ7zFMHM
-# Configuración do AWS 
+#Configuración do AWS 
+
+# AWS S3 Configuration
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
@@ -172,24 +191,35 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# SMTP Configuration para envío de emails
+#SMTP Configuration para envío de emails
 # https://www.youtube.com/watch?v=sFPcd6myZrY
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = False
+#EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.eu.mailgun.org"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # SMTP login from Mailgun dashboard
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # SMTP password from Mailgun
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')       # SMTP login from Mailgun dashboard
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')      # SMTP password from Mailgun
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 
-#---------------------TEMAS DE GIT HUB---------------------------------
-# Para tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
-# https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
 
-# Pasos para facer deploy dende o teu ordenador:
-# Para facer esto tes que instalar o CLI de heroku
+
+#---------------------TEMAS DE GIT HUB-----------------------------------
+#PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
+#https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
+
+#Pasos para facer deploy dende o teu ordenador:
+#Para facer esto tes que instalar o CLI de heroku
 # heroku login
 # git init
 # git add .
@@ -197,18 +227,19 @@ DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 # heroku git:remote -a novaera
 # git push heroku main
 
-# Para crear o requirements.txt file necesario para facer o deploy en Heroku:
-# pip freeze > requirements.txt
+#Para crear o requirements.txt file necesario para facer o deploy en Heroku:
+#pip freeze > requirements.txt
 
-# Cando fas un cambio no modelo e tes que replicalo na base de datos de Heroku
+#Cando fas un cambio no modelo e tes que replicalo na base de datos de Heroku
 
-# Vídeo espectacular que che explica como facer push en GitHub.
+#Vídeo espectacular que che explica como facer push en GitHub.
+#  https://www.youtube.com/watch?v=qMck70tLDuo
 # git init (Crea a carpeta .git na carpeta)
 # git status (Para ver os arquivos que teñen cambios)
 # git add . (Para añadir os arquivos a carpeta git init e logo subilos)
 # git commit -m "nome_do_commit"
 # git push origin main (No caso de que así non che vaia fas "git push origin HEAD:main" ou senon falo cun force "git push -f origin HEAD:main")
-# To establish the connection with the git hub report
+#To stablsih the connection with the git hub report
 # git remote add origin <REMOTE_URL>
 # git remote -v (Para chequear o link do repoistorio a onde lle vas facer push ao proxecto)
 
