@@ -184,7 +184,7 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # SMTP login from Mailgun d
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # SMTP password from Mailgun
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 
-#---------------------TEMAS DE GIT HUB-----------------------------------
+#---------------------TEMAS DE GIT HUB---------------------------------
 # Para tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
 # https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
 
