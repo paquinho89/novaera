@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["python311", "python311Packages.pip", "openssl", "postgresql_16"]
+nixPkgs = ["python312", "openssl", "postgresql"]
 
 [phases.install]
 cmd = "pip install -r requirements.txt"
