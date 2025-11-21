@@ -23,8 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = config('production_secret_key')
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = config('production_secret_key')
+#SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -173,8 +173,8 @@ USE_TZ = True
 #Configuración do AWS 
 
 # AWS S3 Configuration
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.eu-west-3.amazonaws.com'
 AWS_DEFAULT_ACL = 'public-read' 
@@ -208,8 +208,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.eu.mailgun.org"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')       # SMTP login from Mailgun dashboard
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')      # SMTP password from Mailgun
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')       # SMTP login from Mailgun dashboard
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')      # SMTP password from Mailgun
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 
 
