@@ -214,7 +214,7 @@ DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
 
 
 
-#---------------------TEMAS DE GIT HUB-----------------------------------
+#---------------------TEMAS DE GIT HUB-------------------------------------
 #PAra tema de GitHub, se tes problemas cas branches ou co historial colles e fas o que di esta páxina:
 #https://docs.github.com/es/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/adding-an-existing-project-to-github-using-github-desktop
 
