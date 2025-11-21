@@ -218,7 +218,7 @@ EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"
 
 ANYMAIL = {
     "MAILGUN_API_KEY": config("MAILGUN_API_KEY"),
-    "MAILGUN_SENDER_DOMAIN": "sandbox7353f6e2bea743d08a5dad08adf7e986.mailgun.org",  # e.g. mg.novaera.gal
+    "MAILGUN_SENDER_DOMAIN": "novaera.gal",  # e.g. mg.novaera.gal
 }
 
 DEFAULT_FROM_EMAIL = "bandadegaitas@novaera.gal"
