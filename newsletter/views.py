@@ -77,3 +77,24 @@ def newsletter_unsubscribe (request):
 def newsletter_landingpage (request):
   return render(request, 'newsletter_1_landingpage.html')
 
+
+
+#Eliminar###########################
+from .models import newsletter_email
+from django.http import HttpResponse
+
+def carga_emails(request):
+  file_path = "newsletter/newsletter_emails_NE.txt"
+  with open(file_path, 'r') as email_data:
+    for raw in email_data:
+      email = raw.strip()
+      if newsletter_email.objects.filter(email_subscriptor=email).exists():
+        continue
+      else:
+        newsletter_email.objects.create(email_subscriptor=email)
+  return HttpResponse("Done importing emails.")
+#########################################
+    
+
+
+
