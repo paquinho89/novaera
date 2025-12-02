@@ -84,7 +84,7 @@ from .models import newsletter_email
 from django.http import HttpResponse
 
 def carga_emails(request):
-  file_path = "newsletter/newsletter_engadir_limpos.txt"
+  file_path = "newsletter/emails_engadir_limpos.txt"
   with open(file_path, 'r') as email_data:
     for raw in email_data:
       email = raw.strip()
