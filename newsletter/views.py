@@ -84,7 +84,7 @@ from .models import newsletter_email
 from django.http import HttpResponse
 
 def carga_emails(request):
-  file_path = "newsletter/newsletter_emails_NE.txt"
+  file_path = "newsletter/newsletter_engadir_limpos.txt"
   with open(file_path, 'r') as email_data:
     for raw in email_data:
       email = raw.strip()
@@ -94,6 +94,25 @@ def carga_emails(request):
         newsletter_email.objects.create(email_subscriptor=email)
   return HttpResponse("Done importing emails.")
 #########################################
+#Extraccíón de emails de un archivo .txt
+#import re
+# def busqueda_emails(request):
+#   file_path = "newsletter/correos_sucios_friki.txt"
+#   #email_regex = r"([a-zA-Z0-9._+-]+@(?:gmail|yahoo)\.[a-zA-Z0-9-.]+)"
+#   email_regex = r"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})"
+#   emails = set()
+#   with open (file_path, 'r', encoding="utf-8", errors="ignore") as alex_emails:
+#     alex_emails_read=alex_emails.read()
+#     emails_found=re.findall(email_regex, alex_emails_read)
+#     for email in emails_found:
+#       emails.add(email.lower())
+#   with open("newsletter/emails_friki_limpos.txt", "w", encoding="utf-8") as final_file:
+#     for email in sorted(emails):
+#       final_file.write(email + "\n")
+#   return HttpResponse ("Feito")
+      
+
+
     
 
 

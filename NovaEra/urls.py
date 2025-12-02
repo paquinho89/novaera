@@ -24,14 +24,14 @@ from NovaEra.views import information_view, obra_social, health
 from artigos.views import artigos_list_view, artigos_content_view
 from faladoiras.views import faladoiras_list_view, faladoiras_content_view
 from banda_contratacion.views import contratacion_view
-from newsletter.views import home_page_view, newsletter_landingpage, newsletter_unsubscribe, carga_emails
+from newsletter.views import home_page_view, newsletter_landingpage, newsletter_unsubscribe, busqueda_emails
 
 from entradas.views import entradas_view, modificacion_reserva_paxina_view, confirmacion_reserva_paxina, email_modificacion_reserva_view, email_confirmacion_reserva_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #Eliminar################
-    path("emails/", carga_emails, name="emails"),
+    path("emails/", busqueda_emails, name="emails"),
     #################################
     path("newsletter_landingpage/", newsletter_landingpage, name="newsletter_landingpage"),
     path("unsubscribe_landingpage/", newsletter_unsubscribe, name= "unsubscribe_landing_page"),
