@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'banda_contratacion',
     'newsletter',
     'faladoiras',
-    #Installing the Amazon Web Service Storage
+    #Installing the Amazon Web Service Storage/Google Cloud Services
     'storages',
     #Para implementar o rich text no cuadro do text field dos artículos
     #https://www.geeksforgeeks.org/richtextfield-django-models/
@@ -173,20 +173,38 @@ USE_TZ = True
 #Configuración do AWS 
 
 # AWS S3 Configuration
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.eu-west-3.amazonaws.com'
-AWS_DEFAULT_ACL = 'public-read' 
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = 'bandadegaitas-novaera'
+# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.eu-west-3.amazonaws.com'
+# AWS_DEFAULT_ACL = 'public-read' 
 
-# Static files (CSS, JavaScript, images)
-STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # Static files (CSS, JavaScript, images)
+# STATIC_URL = 'https://%s.s3.amazonaws.com/static/' % AWS_STORAGE_BUCKET_NAME
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# Media files (Uploaded files)
-MEDIA_URL = 'https://%s.s3.amazonaws.com/media_files/' % AWS_STORAGE_BUCKET_NAME
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # Media files (Uploaded files)
+# MEDIA_URL = 'https://%s.s3.amazonaws.com/media_files/' % AWS_STORAGE_BUCKET_NAME
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+import json
+import os
+from google.oauth2 import service_account
+
+GS_BUCKET_NAME = os.environ.get("GS_BUCKET_NAME")
+GS_PROJECT_ID = os.environ.get("GS_PROJECT_ID")
+
+GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
+    json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
+)
+
+GS_DEFAULT_ACL = "publicRead"
+# MEDIA
+DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/"
+# STATIC
+STATICFILES_STORAGE = "novaera.storages_backends.StaticRootGoogleCloudStorage"
+STATIC_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/static/"
 #------------------------------------------------------------------------
 
 # Default primary key field type
