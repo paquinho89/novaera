@@ -200,10 +200,10 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
 
 GS_DEFAULT_ACL = "publicRead"
 # MEDIA
-DEFAULT_FILE_STORAGE = "storages.backends.gcloud.GoogleCloudStorage"
+DEFAULT_FILE_STORAGE = "NovaEra.storages_backends.MediaRootGoogleCloudStorage"
 MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/"
 # STATIC
-STATICFILES_STORAGE = "novaera.storages_backends.StaticRootGoogleCloudStorage"
+STATICFILES_STORAGE = "NovaEra.storages_backends.StaticRootGoogleCloudStorage"
 STATIC_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/static/"
 #------------------------------------------------------------------------
 
