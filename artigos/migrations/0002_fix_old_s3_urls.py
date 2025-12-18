@@ -2,23 +2,12 @@
 
 from django.db import migrations
 
-def fix_old_s3_urls(apps, schema_editor):
-    Artigo = apps.get_model("artigos", "Artigo")
-
-    old = "https://bandadegaitas-novaera.s3.eu-west-3.amazonaws.com/"
-
-    for obj in Artigo.objects.exclude(imagen=""):
-        if old in obj.imagen:
-            obj.imagen = obj.imagen.replace(old, "")
-            obj.save(update_fields=["imagen"])
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('artigos', '0001_initial'),  
+        ('artigos', '0001_initial'),
     ]
 
     operations = [
-        migrations.RunPython(fix_old_s3_urls),
     ]
-
