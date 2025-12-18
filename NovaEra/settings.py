@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'artigos',
     'banda_contratacion',
     'newsletter',
-    'faladoiras',
     #Installing the Amazon Web Service Storage/Google Cloud Services
     'storages',
     #Para implementar o rich text no cuadro do text field dos artículos
