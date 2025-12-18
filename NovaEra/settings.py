@@ -198,7 +198,7 @@ GS_CREDENTIALS = service_account.Credentials.from_service_account_info(
     json.loads(os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"])
 )
 
-GS_DEFAULT_ACL = "publicRead"
+GS_DEFAULT_ACL = None
 # MEDIA
 DEFAULT_FILE_STORAGE = "NovaEra.storages_backends.MediaRootGoogleCloudStorage"
 MEDIA_URL = f"https://storage.googleapis.com/{GS_BUCKET_NAME}/"
